@@ -1,8 +1,8 @@
 package com.example.rizzboys.controller;
 
 import com.example.rizzboys.model.Product;
-import com.example.rizzboys.exception.ProductNotFoundException;
-import com.example.rizzboys.service.impl.ProductService;
+import com.example.rizzboys.exception.NotFoundException;
+import com.example.rizzboys.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +32,6 @@ public class ProductController {
     @GetMapping("/{code}")
     public Product productByCode(@PathVariable String code) {
         return productService.findProductByCode(code)
-                .orElseThrow(() -> new ProductNotFoundException("Product with code ["+code+"] doesn't exist"));
+                .orElseThrow(() -> new NotFoundException("Product with code ["+code+"] doesn't exist"));
     }
 }

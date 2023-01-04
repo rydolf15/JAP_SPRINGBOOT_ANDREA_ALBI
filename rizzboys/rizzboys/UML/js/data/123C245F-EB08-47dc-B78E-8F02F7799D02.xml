@@ -1,3 +1,0 @@
-tocTab[tocTab.length] = new Array("0.1:1", "", "Architecture", "EARoot/EA1/EA1.htm", "178.png", "301", "0", "", "Component diagram0","{E118BE0B-A2BC-41ae-BBA2-A67A7475803E}");
-tocTab[tocTab.length] = new Array("0.1:2", "", "«teacher» Angular Client", "EARoot/EA1/EA4.htm", "10.png", "E2723", "0", "", "Component0","{5985941A-2EDC-4409-9C0C-B2F805BED340}");
-tocTab[tocTab.length] = new Array("0.1:3", "", "«students» Application", "EARoot/EA1/EA5.htm", "10.png", "E2724", "0", "", "Component0","{24058F28-5CE4-4b70-886C-EDD8055FDE1E}");

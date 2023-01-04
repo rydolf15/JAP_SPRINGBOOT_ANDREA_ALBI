@@ -24,7 +24,7 @@ public class Product {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "product")
-    private List<Product> products = new ArrayList<>();
+    private List<CartQty> products = new ArrayList<>();
 
     public Product() {
     }

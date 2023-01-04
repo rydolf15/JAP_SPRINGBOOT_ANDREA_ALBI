@@ -3,12 +3,14 @@ package com.example.rizzboys.service.impl;
 import com.example.rizzboys.exception.NotFoundException;
 import com.example.rizzboys.model.Cart;
 import com.example.rizzboys.repos.CartRepository;
-import com.example.rizzboys.service.CartServices;
+import com.example.rizzboys.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class CartServiceImpl implements CartServices {
+@Service
+public class CartServiceImpl implements CartService {
 
     @Autowired
     CartRepository cartRepository;

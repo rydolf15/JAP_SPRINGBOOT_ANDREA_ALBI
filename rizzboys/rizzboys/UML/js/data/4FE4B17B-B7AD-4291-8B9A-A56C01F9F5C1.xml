@@ -1,0 +1,15 @@
+tocTab[tocTab.length] = new Array("0.3:1", "", "REST services", "EARoot/EA3/EA15.htm", "175.png", "299", "0", "", "Logical diagram0","{07641FA9-965E-4532-A213-2B7DFE3830D7}");
+tocTab[tocTab.length] = new Array("0.3:2", "", "AddToCartDto", "EARoot/EA3/EA18.htm", "5.png", "E2755", "0", "", "Class0","{15DD0AD6-C4F5-4c97-923D-5AEA875A8A5A}");
+tocTab[tocTab.length] = new Array("0.3:3", "", "CartController", "EARoot/EA3/EA19.htm", "5.png", "E2754", "0", "", "Class0","{3FF6DCA4-7649-40b8-985C-C875BE976225}");
+tocTab[tocTab.length] = new Array("0.3:4", "", "CartDto", "EARoot/EA3/EA20.htm", "5.png", "E2759", "0", "", "Class0","{68BF08BA-40B9-434b-9460-8A8DC2E8961E}");
+tocTab[tocTab.length] = new Array("0.3:5", "", "CartEntryDto", "EARoot/EA3/EA21.htm", "5.png", "E2760", "0", "", "Class0","{EA1004EF-977A-4113-9785-FE8118A57054}");
+tocTab[tocTab.length] = new Array("0.3:6", "", "CatalogController", "EARoot/EA3/EA22.htm", "5.png", "E2751", "0", "", "Class0","{3DC67F26-8DC2-4510-AAE7-49FEC31E823B}");
+tocTab[tocTab.length] = new Array("0.3:7", "", "CustomerIdDto", "EARoot/EA3/EA23.htm", "5.png", "E2758", "0", "", "Class0","{6B47C414-5BE3-44bc-AC2F-13F1F75691F5}");
+tocTab[tocTab.length] = new Array("0.3:8", "", "LoginRequestDto", "EARoot/EA3/EA24.htm", "5.png", "E2749", "0", "", "Class0","{6DBC52F1-DA1F-4690-AB1B-ED25490AF152}");
+tocTab[tocTab.length] = new Array("0.3:9", "", "ProductDto", "EARoot/EA3/EA25.htm", "5.png", "E2753", "0", "", "Class0","{C7A6B8D3-CEE0-4bad-AF4C-E637239F25E3}");
+tocTab[tocTab.length] = new Array("0.3:10", "", "ProductIdDto", "EARoot/EA3/EA26.htm", "5.png", "E2762", "0", "", "Class0","{584EC3CA-FB2E-4f0b-BF97-9148FDDF7160}");
+tocTab[tocTab.length] = new Array("0.3:11", "", "ProductKeysDto", "EARoot/EA3/EA27.htm", "5.png", "E2756", "0", "", "Class0","{BA544D6D-C94D-403f-BC17-F59A8D790345}");
+tocTab[tocTab.length] = new Array("0.3:12", "", "RemoveFromCartDto", "EARoot/EA3/EA28.htm", "5.png", "E2761", "0", "", "Class0","{424AF632-3727-470c-91DA-067A33592C44}");
+tocTab[tocTab.length] = new Array("0.3:13", "", "SecurityController", "EARoot/EA3/EA29.htm", "5.png", "E2748", "0", "", "Class0","{7E675FB4-BFC7-4a6b-AF52-47695FB38C17}");
+tocTab[tocTab.length] = new Array("0.3:14", "", "StringFilterDto", "EARoot/EA3/EA30.htm", "5.png", "E2752", "0", "", "Class0","{61EF636C-5C19-4913-AC29-DE84DBD49D6A}");
+tocTab[tocTab.length] = new Array("0.3:15", "", "UserDto", "EARoot/EA3/EA31.htm", "5.png", "E2750", "0", "", "Class0","{B4B28E25-6012-43f5-8AE5-3396E1C643BF}");

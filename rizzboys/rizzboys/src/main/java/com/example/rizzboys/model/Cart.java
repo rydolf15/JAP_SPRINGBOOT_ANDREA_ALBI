@@ -25,7 +25,11 @@ public class Cart {
     public Cart() {
     }
     @OneToMany(mappedBy = "cart")
-    List<Cart> students = new ArrayList<>();
+    List<Customer> customers = new ArrayList<>();
+
+    @OneToMany(mappedBy = "cart")
+    List<CartQty> cartQties = new ArrayList<>();
+
 
     public Cart(LocalDate date, String state) {
         this.date = date;

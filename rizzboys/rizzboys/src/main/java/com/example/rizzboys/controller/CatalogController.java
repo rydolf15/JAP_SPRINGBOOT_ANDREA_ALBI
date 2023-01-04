@@ -1,6 +1,7 @@
 package com.example.rizzboys.controller;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Spliterator;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -11,16 +12,22 @@ import com.example.rizzboys.dto.ProductKeysDto;
 import com.example.rizzboys.dto.StringFilterDto;
 import com.example.rizzboys.model.Product;
 import com.example.rizzboys.repos.ProductRepository;
+import com.example.rizzboys.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/api/catalog")
+@RequestMapping(value = "/catalog")
 public class CatalogController {
 
     @Autowired
-    private ProductRepository repository;
+    private ProductRepository productRepository;
+
+    @Autowired
+    private ProductService productService;
+
+
 
     @ResponseBody
     @GetMapping("/search")
@@ -29,14 +36,20 @@ public class CatalogController {
     };
 
     @ResponseBody
-    @GetMapping("/getdata")
+    @GetMapping("/get")
     public ProductDto getProductData(ProductKeysDto productKeysDto){
-        return null;
     };
 
     @ResponseBody
     @PostMapping("/add")
-    public void addProduct(ProductDto productDto){};
+    public void addProduct(@RequestBody ProductDto productDto){
+        Product p = new Product();
+        p.setid(productDto.getId());
+        p.setname(productDto.getName());
+        p.setdescription(productDto.getDescription());
+        p.setprice(productDto.getPrice());
+        productService.saveProduct(p);
+    };
 
 
     @ResponseBody
@@ -57,7 +70,7 @@ public class CatalogController {
     @ResponseBody
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Product> getAll() {
-        Spliterator<Product> products = repository.findAll().spliterator();
+        Spliterator<Product> products = productRepository.findAll().spliterator();
         return StreamSupport.stream(products, false).collect(Collectors.toList());
     }
 }

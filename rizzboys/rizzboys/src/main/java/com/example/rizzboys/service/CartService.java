@@ -5,7 +5,7 @@ import com.example.rizzboys.model.Cart;
 
 import java.util.List;
 
-public interface CartServices {
+public interface CartService {
 
     Cart saveCart(Cart cart);
 

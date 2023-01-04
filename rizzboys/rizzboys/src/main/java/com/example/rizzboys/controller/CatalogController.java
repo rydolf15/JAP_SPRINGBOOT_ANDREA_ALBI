@@ -38,7 +38,8 @@ public class CatalogController {
     @ResponseBody
     @GetMapping("/get")
     public ProductDto getProductData(ProductKeysDto productKeysDto){
-    };
+        return null;
+    }
 
     @ResponseBody
     @PostMapping("/add")

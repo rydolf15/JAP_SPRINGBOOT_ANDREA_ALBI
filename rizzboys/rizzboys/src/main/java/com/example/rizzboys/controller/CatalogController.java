@@ -21,17 +21,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/catalog")
 public class CatalogController {
 
-    @Autowired
-    private ProductRepository productRepository;
 
     @Autowired
     private ProductService productService;
 
-
-
     @ResponseBody
     @GetMapping("/search")
     public List<ProductDto> searchInCatalog(StringFilterDto stringFilterDto){
+
         return null;
     };
 
@@ -54,7 +51,7 @@ public class CatalogController {
 
 
     @ResponseBody
-    @PostMapping("change")
+    @PostMapping("/change")
     public void changeProduct(ProductDto productDto){};
 
 
@@ -68,10 +65,10 @@ public class CatalogController {
 
 
 
-    @ResponseBody
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Product> getAll() {
-        Spliterator<Product> products = productRepository.findAll().spliterator();
-        return StreamSupport.stream(products, false).collect(Collectors.toList());
-    }
+//    @ResponseBody
+//    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+//    public List<Product> getAll() {
+//        Spliterator<Product> products = productRepository.findAll().spliterator();
+//        return StreamSupport.stream(products, false).collect(Collectors.toList());
+//    }
 }

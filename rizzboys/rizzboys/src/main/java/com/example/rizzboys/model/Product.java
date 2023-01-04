@@ -12,19 +12,19 @@ import java.util.List;
 @Table(name = "products")
 public class Product {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    protected Long id;
     @Column(nullable = false, unique = true)
-    private String code;
+    protected String code;
     @Column(nullable = false)
-    private String name;
-    private String description;
-    private Double price;
-    private Boolean enable;
+    protected String name;
+    protected String description;
+    protected Double price;
+    protected Boolean enable;
 
 
     @JsonManagedReference
     @OneToMany(mappedBy = "product")
-    private List<CartQty> products = new ArrayList<>();
+    protected List<CartQty> products = new ArrayList<>();
 
     public Product() {
     }

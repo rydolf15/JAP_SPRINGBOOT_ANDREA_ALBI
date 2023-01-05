@@ -1,8 +1,9 @@
 package com.example.rizzboys.service.impl;
 
+import com.example.rizzboys.dto.LoginRequestDto;
+import com.example.rizzboys.dto.StringFilterDto;
 import com.example.rizzboys.exception.NotFoundException;
 import com.example.rizzboys.model.Customer;
-import com.example.rizzboys.model.Product;
 import com.example.rizzboys.repos.CustomerRespository;
 import com.example.rizzboys.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,17 @@ public class CustomerServiceImpl implements CustomerService {
     CustomerRespository customerRespository;
 
     @Override
+    public String login(LoginRequestDto loginRequestDto) throws NotFoundException {
+        Customer customer = customerRespository.findByUsername(loginRequestDto.getUsername());
+        return "Welcome";
+    }
+
+    @Override
     public Customer saveCustomer(Customer c) {
         return customerRespository.save(c);
     }
+
+
 
     @Override
     public void removeCustomer(Customer c) {

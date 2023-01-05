@@ -1,5 +1,7 @@
 package com.example.rizzboys.dto;
 
+import com.example.rizzboys.model.Product;
+
 public class ProductDto {
     Long id;
     String code;
@@ -7,6 +9,24 @@ public class ProductDto {
     String description;
     Double price;
     boolean enabled;
+
+    public ProductDto(Product product) {
+        this.setId(product.getId());
+        this.setCode(product.getCode());
+        this.setName(product.getName());
+        this.setDescription(product.getDescription());
+        this.setPrice(product.getPrice());
+        this.setEnabled(product.getEnable());
+    }
+
+
+    public ProductDto(String code, String name, String description, Double price, boolean enabled) {
+        this.code = code;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.enabled = enabled;
+    }
 
     public Long getId() {
         return id;
@@ -48,7 +68,7 @@ public class ProductDto {
         this.price = price;
     }
 
-    public boolean isEnabled() {
+    public boolean getEnabled() {
         return enabled;
     }
 

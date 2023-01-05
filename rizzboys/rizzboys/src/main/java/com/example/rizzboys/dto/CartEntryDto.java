@@ -64,4 +64,18 @@ public class CartEntryDto {
     public void setTotal(Double total) {
         this.total = total;
     }
+
+
+    @Override
+    public String toString() {
+        return "CartEntryDto{" +
+                "idProduct=" + idProduct +
+                ", idCartQty=" + idCartQty +
+                ", code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", qty=" + qty +
+                ", total=" + total +
+                '}';
+    }
 }

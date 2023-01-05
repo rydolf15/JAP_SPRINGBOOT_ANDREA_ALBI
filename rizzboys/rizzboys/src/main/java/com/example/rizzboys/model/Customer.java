@@ -12,20 +12,20 @@ import java.util.List;
 @Entity
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    private String firstname;
+    private String firstName;
     @Column(nullable = false)
-    private String lastname;
+    private String lastName;
     @Column(nullable = false, unique = true)
     private String username;
     @Column(nullable = false, unique = true)
     private String password;
 
     public Customer(String firstname, String lastname, String username, String password) {
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstname;
+        this.lastName = lastname;
         this.username = username;
         this.password = password;
     }

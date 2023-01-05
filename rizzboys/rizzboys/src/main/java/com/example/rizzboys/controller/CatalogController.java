@@ -42,10 +42,10 @@ public class CatalogController {
     @PostMapping("/add")
     public void addProduct(@RequestBody ProductDto productDto){
         Product p = new Product();
-        p.setid(productDto.getId());
-        p.setname(productDto.getName());
-        p.setdescription(productDto.getDescription());
-        p.setprice(productDto.getPrice());
+        p.setId(productDto.getId());
+        p.setName(productDto.getName());
+        p.setDescription(productDto.getDescription());
+        p.setPrice(productDto.getPrice());
         productService.saveProduct(p);
     };
 

@@ -1,13 +1,13 @@
 package com.example.rizzboys.dto;
 
 public class CustomerIdDto {
-    Long idCustomer;
+    Long customerId;
 
-    public Long getIdCustomer() {
-        return idCustomer;
+    public Long getCustomerId() {
+        return customerId;
     }
 
-    public void setIdCustomer(Long idCustomer) {
-        this.idCustomer = idCustomer;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 }

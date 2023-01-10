@@ -11,10 +11,10 @@ import com.example.rizzboys.service.CartService;
 import com.example.rizzboys.service.ProductService;
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+@RestController
+@RequestMapping("/cart")
 public class CartController {
 
     @Autowired

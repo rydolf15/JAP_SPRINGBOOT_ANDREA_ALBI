@@ -6,6 +6,7 @@ import com.example.rizzboys.dto.CustomerIdDto;
 import com.example.rizzboys.dto.RemoveFromCartDto;
 import com.example.rizzboys.model.Cart;
 import com.example.rizzboys.model.Customer;
+import com.example.rizzboys.model.Product;
 import com.example.rizzboys.repos.CartRepository;
 import com.example.rizzboys.service.CartService;
 import com.example.rizzboys.service.ProductService;
@@ -26,10 +27,8 @@ public class CartController {
     @PostMapping("/addToCart")
     @ResponseBody
     public void addToCart(@RequestBody AddToCartDto addToCartDto){
-
-
-
-
+        Product product = productService.findById(addToCartDto.getIdProduct());
+        cartService.
     };
 
     public CartDto displayCart(CustomerIdDto customerIdDto){

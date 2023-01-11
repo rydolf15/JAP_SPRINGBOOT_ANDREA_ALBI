@@ -23,12 +23,16 @@ public class Customer {
     @Column(nullable = false, unique = true)
     private String password;
 
+    @OneToMany
+    private List<Cart> carts = new ArrayList<>();
+
     public Customer(String firstname, String lastname, String username, String password) {
         this.firstName = firstname;
         this.lastName = lastname;
         this.username = username;
         this.password = password;
     }
+
 
     public Customer() {}
 }

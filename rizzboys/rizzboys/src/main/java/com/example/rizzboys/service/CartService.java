@@ -1,13 +1,18 @@
 package com.example.rizzboys.service;
 
+import com.example.rizzboys.dto.AddToCartDto;
 import com.example.rizzboys.exception.NotFoundException;
 import com.example.rizzboys.model.Cart;
+import com.example.rizzboys.model.Customer;
+import com.example.rizzboys.model.Product;
 
 import java.util.List;
 
 public interface CartService {
 
     Cart saveCart(Cart cart);
+
+    void addToCart(AddToCartDto addToCartDto, Product product, Customer customer);
 
     void removeCart(Cart cart);
 

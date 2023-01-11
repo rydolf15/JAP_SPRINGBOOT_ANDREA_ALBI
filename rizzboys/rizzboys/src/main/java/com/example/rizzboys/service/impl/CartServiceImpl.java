@@ -1,7 +1,10 @@
 package com.example.rizzboys.service.impl;
 
+import com.example.rizzboys.dto.AddToCartDto;
 import com.example.rizzboys.exception.NotFoundException;
 import com.example.rizzboys.model.Cart;
+import com.example.rizzboys.model.Customer;
+import com.example.rizzboys.model.Product;
 import com.example.rizzboys.repos.CartRepository;
 import com.example.rizzboys.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,11 @@ public class CartServiceImpl implements CartService {
     @Override
     public Cart saveCart(Cart cart) {
         return cartRepository.save(cart);
+    }
+
+    @Override
+    public void addToCart(AddToCartDto addToCartDto, Product product, Customer customer) {
+        Cart cart = new Cart(addToCartDto.getQuantity(), customer);
     }
 
     @Override

@@ -14,10 +14,12 @@ public class CartQty {
     private Long id;
     private Integer quantity;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "id")
-    private Product products = new Product();
+    private List<Product> products = new ArrayList<>();
 
     @OneToMany
     private List<Cart> carts = new ArrayList<>();
+
+
 }

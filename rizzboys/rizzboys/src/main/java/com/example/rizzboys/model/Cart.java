@@ -21,15 +21,19 @@ public class Cart {
     @Column(name = "state")
     private String state;
 
-
+    //GABIM SHIFE NESER. (LIDHJET ETJ)
     public Cart() {
     }
-    @OneToMany(mappedBy = "cart")
-    List<Customer> customers = new ArrayList<>();
+    @ManyToOne
+    private Customer customer;
 
     @OneToMany(mappedBy = "cart")
     List<CartQty> cartQties = new ArrayList<>();
 
+    public Cart(Customer customer, List<CartQty> cartQties) {
+        this.customer = customer;
+        this.cartQties = cartQties;
+    }
 
     public Cart(LocalDate date, String state) {
         this.date = date;

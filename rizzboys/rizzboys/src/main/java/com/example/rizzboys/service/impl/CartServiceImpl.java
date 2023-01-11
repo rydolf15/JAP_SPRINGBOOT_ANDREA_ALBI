@@ -7,6 +7,7 @@ import com.example.rizzboys.model.Cart;
 import com.example.rizzboys.model.Customer;
 import com.example.rizzboys.model.Product;
 import com.example.rizzboys.repos.CartRepository;
+import com.example.rizzboys.repos.ProductRepository;
 import com.example.rizzboys.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,9 @@ public class CartServiceImpl implements CartService {
 
     @Autowired
     CartRepository cartRepository;
+    @Autowired
+    ProductRepository productRepository;
+
 
     @Override
     public Cart saveCart(Cart cart) {
@@ -26,7 +30,18 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public void addToCart(AddToCartDto addToCartDto) {
-        cartRepository.save(addToCartDto.getIdProduct());
+        // retrieve product
+        Product product = productRepository.findById(addToCartDto.getIdProduct())
+                .orElse(null);
+        //TODO: retrieve cart
+        Cart dbCart =
+        // if cart is empty create
+        if (dbCart == null){
+            dbCart = new Cart();
+            // fill it
+        }
+        // get all products associated to dbCart and add a new one checking if it already exists or not in the cart
+        cartRepository.save(dbCart);
     }
 
     @Override

@@ -21,7 +21,6 @@ public class Cart {
     @Column(name = "state")
     private String state;
 
-    //GABIM SHIFE NESER. (LIDHJET ETJ)
     public Cart() {
     }
     @ManyToOne
@@ -39,6 +38,7 @@ public class Cart {
         this.date = date;
         this.state = state;
     }
+
 
     public Long getId() {
         return id;
@@ -60,13 +60,11 @@ public class Cart {
         this.state = state;
     }
 
-    public List<Customer> getCustomers() {
-        return customers;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomers(List<Customer> customers) {
-        this.customers = customers;
-    }
+    public void setCustomer(Customer customer) {this.customer = customer;}
 
     public List<CartQty> getCartQties() {
         return cartQties;

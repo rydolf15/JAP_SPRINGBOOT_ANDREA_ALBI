@@ -27,8 +27,7 @@ public class CartController {
     @PostMapping("/addToCart")
     @ResponseBody
     public void addToCart(@RequestBody AddToCartDto addToCartDto){
-        Product product = productService.findById(addToCartDto.getIdProduct());
-        cartService.addToCart();
+        cartService.addToCart(addToCartDto);
     };
 
     public CartDto displayCart(CustomerIdDto customerIdDto){

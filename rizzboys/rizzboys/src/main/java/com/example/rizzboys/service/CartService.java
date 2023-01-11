@@ -12,7 +12,7 @@ public interface CartService {
 
     Cart saveCart(Cart cart);
 
-    void addToCart(AddToCartDto addToCartDto, Product product, Customer customer);
+    void addToCart(AddToCartDto addToCartDto);
 
     void removeCart(Cart cart);
 

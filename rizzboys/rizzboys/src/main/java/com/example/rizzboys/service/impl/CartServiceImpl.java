@@ -1,6 +1,7 @@
 package com.example.rizzboys.service.impl;
 
 import com.example.rizzboys.dto.AddToCartDto;
+import com.example.rizzboys.dto.ProductKeysDto;
 import com.example.rizzboys.exception.NotFoundException;
 import com.example.rizzboys.model.Cart;
 import com.example.rizzboys.model.Customer;
@@ -24,8 +25,8 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public void addToCart(AddToCartDto addToCartDto, Product product, Customer customer) {
-        Cart cart = new Cart(addToCartDto.getQuantity(), customer);
+    public void addToCart(AddToCartDto addToCartDto) {
+        cartRepository.save(addToCartDto.getIdProduct());
     }
 
     @Override

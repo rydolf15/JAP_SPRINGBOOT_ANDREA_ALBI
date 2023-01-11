@@ -28,7 +28,7 @@ public class CartController {
     @ResponseBody
     public void addToCart(@RequestBody AddToCartDto addToCartDto){
         Product product = productService.findById(addToCartDto.getIdProduct());
-        cartService.
+        cartService.addToCart();
     };
 
     public CartDto displayCart(CustomerIdDto customerIdDto){

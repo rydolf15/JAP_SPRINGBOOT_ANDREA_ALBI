@@ -10,4 +10,6 @@ public class AddToCartDto extends ProductKeysDto {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+
 }

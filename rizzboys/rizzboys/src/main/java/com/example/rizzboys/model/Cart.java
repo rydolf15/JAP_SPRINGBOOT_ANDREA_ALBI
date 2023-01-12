@@ -14,13 +14,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "cart")
-@Getter
-@Setter
+@Data
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter private Long id;
-    @Column(name = "date", nullable = false, unique = true)
+    @Column(name = "date", nullable = false)
     private LocalDate date;
     @Column(name = "state")
     private String state;
@@ -29,44 +28,9 @@ public class Cart {
     }
 
     @ManyToOne
-    @JoinColumn(name = "customer_id", nullable = false, referencedColumnName = "customer_id")
     private Customer customer;
 
-    @ManyToOne
-    @JoinColumn(name = "cartQty_id", nullable = false, referencedColumnName = "cartQty_id")
-    private CartQty cartQty;
-
-
-    public Cart(Customer customer, CartQty cartQty) {
-        this.customer = customer;
-        this.cartQty = cartQty;
-    }
-
-    public Cart(LocalDate date, String state) {
-        this.date = date;
-        this.state = state;
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
+    @OneToMany(mappedBy = "cart")
+    private List<CartQty> cartQtys = new ArrayList<>();
 }
 

@@ -1,5 +1,10 @@
 package com.example.rizzboys.dto;
 
+import com.example.rizzboys.model.Cart;
+import com.example.rizzboys.model.CartQty;
+import lombok.Data;
+
+@Data
 public class CartEntryDto {
     Long idProduct;
     Long idCartQty;
@@ -9,62 +14,16 @@ public class CartEntryDto {
     Double qty;
     Double total;
 
-    public Long getIdProduct() {
-        return idProduct;
-    }
+    public CartEntryDto(){}
 
-    public void setIdProduct(Long idProduct) {
-        this.idProduct = idProduct;
+    public CartEntryDto(CartQty cartQty) {
+        this.setIdCartQty(cartQty.getCartQty_id());
+        this.setIdProduct(cartQty.getProduct().getId());
+        this.setCode(cartQty.getProduct().getCode());
+        this.setName(cartQty.getProduct().getName());
+        this.setPrice(cartQty.getProduct().getPrice());
+        this.setQty(cartQty.getQuantity().doubleValue());
     }
-
-    public Long getIdCartQty() {
-        return idCartQty;
-    }
-
-    public void setIdCartQty(Long idCartQty) {
-        this.idCartQty = idCartQty;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public Double getQty() {
-        return qty;
-    }
-
-    public void setQty(Double qty) {
-        this.qty = qty;
-    }
-
-    public Double getTotal() {
-        return total;
-    }
-
-    public void setTotal(Double total) {
-        this.total = total;
-    }
-
 
     @Override
     public String toString() {

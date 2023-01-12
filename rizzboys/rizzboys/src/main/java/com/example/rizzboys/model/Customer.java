@@ -10,20 +10,21 @@ import java.util.List;
 
 @Table(name = "customer")
 @Entity
+@Data
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long customer_id;
+    private Long id;
     @Column(nullable = false)
     private String firstName;
     @Column(nullable = false)
     private String lastName;
     @Column(nullable = false, unique = true)
     private String username;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String password;
 
-    @OneToMany
+    @OneToMany(mappedBy = "customer")
     private List<Cart> carts = new ArrayList<>();
 
     public Customer(String firstname, String lastname, String username, String password) {

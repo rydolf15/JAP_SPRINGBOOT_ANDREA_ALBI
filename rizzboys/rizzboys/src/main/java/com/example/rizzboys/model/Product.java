@@ -10,9 +10,10 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "products")
+@Table
+@Data
 public class Product {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
     @Column(nullable = false, unique = true)
     protected String code;
@@ -22,12 +23,9 @@ public class Product {
     protected Double price;
     protected Boolean enable;
 
+    @OneToMany(mappedBy = "product")
+    protected List<CartQty> qties = new ArrayList<>();
 
-
-/*
-    @ManyToOne
-    protected List<CartQty> products = new ArrayList<>();
-*/
 
     public Product(ProductDto productDto){
         this.code = productDto.getCode();
@@ -41,37 +39,5 @@ public class Product {
     public Product() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    @Override
-    public String toString() {
-        return "Product [id=" + id + ", name=" + name + ", price=" + price + "]";
-    }
 }
 

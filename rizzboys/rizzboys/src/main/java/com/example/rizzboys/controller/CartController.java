@@ -30,8 +30,10 @@ public class CartController {
         cartService.addToCart(addToCartDto);
     };
 
+    @GetMapping("/displayCart")
+    @ResponseBody
     public CartDto displayCart(CustomerIdDto customerIdDto){
-        return null;
+        return cartService.displayCart(customerIdDto);
     };
 
     public CartDto removeFromCart(RemoveFromCartDto removeFromCartDto){

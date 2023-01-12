@@ -2,6 +2,8 @@ package com.example.rizzboys.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.cglib.core.Local;
 
 
@@ -9,13 +11,15 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+
 @Entity
 @Table(name = "cart")
+@Getter
+@Setter
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Getter private Long id;
     @Column(name = "date", nullable = false, unique = true)
     private LocalDate date;
     @Column(name = "state")
@@ -23,15 +27,19 @@ public class Cart {
 
     public Cart() {
     }
+
     @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false, referencedColumnName = "customer_id")
     private Customer customer;
 
-    @OneToMany(mappedBy = "cart")
-    List<CartQty> cartQties = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "cartQty_id", nullable = false, referencedColumnName = "cartQty_id")
+    private CartQty cartQty;
 
-    public Cart(Customer customer, List<CartQty> cartQties) {
+
+    public Cart(Customer customer, CartQty cartQty) {
         this.customer = customer;
-        this.cartQties = cartQties;
+        this.cartQty = cartQty;
     }
 
     public Cart(LocalDate date, String state) {
@@ -60,18 +68,5 @@ public class Cart {
         this.state = state;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {this.customer = customer;}
-
-    public List<CartQty> getCartQties() {
-        return cartQties;
-    }
-
-    public void setCartQties(List<CartQty> cartQties) {
-        this.cartQties = cartQties;
-    }
 }
 

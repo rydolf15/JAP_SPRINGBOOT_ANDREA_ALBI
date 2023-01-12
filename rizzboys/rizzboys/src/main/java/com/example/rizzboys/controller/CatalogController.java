@@ -38,6 +38,7 @@ public class CatalogController {
         return null;
     }
 
+/*
     @ResponseBody
     @PostMapping("/add")
     public void addProduct(@RequestBody ProductDto productDto){
@@ -48,6 +49,7 @@ public class CatalogController {
         p.setPrice(productDto.getPrice());
         productService.saveProduct(p);
     };
+*/
 
 
     @ResponseBody

@@ -6,23 +6,27 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Table(name = "cart_qty")
 @Entity
 public class CartQty {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long cartQty_id;
     private Integer quantity;
 
-    @OneToMany
+
+/*
+    @ManyToOne
     @JoinColumn(name = "id")
     private List<Product> products = new ArrayList<>();
+*/
 
     @OneToMany
     private List<Cart> carts = new ArrayList<>();
 
+
     public Long getId() {
-        return id;
+        return cartQty_id;
     }
 
     public Integer getQuantity() {
@@ -33,6 +37,7 @@ public class CartQty {
         this.quantity = quantity;
     }
 
+/*
     public List<Product> getProducts() {
         return products;
     }
@@ -48,4 +53,5 @@ public class CartQty {
     public void setCarts(List<Cart> carts) {
         this.carts = carts;
     }
+*/
 }

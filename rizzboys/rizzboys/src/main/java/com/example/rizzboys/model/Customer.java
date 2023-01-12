@@ -7,13 +7,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+
 @Table(name = "customer")
 @Entity
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long customer_id;
     @Column(nullable = false)
     private String firstName;
     @Column(nullable = false)

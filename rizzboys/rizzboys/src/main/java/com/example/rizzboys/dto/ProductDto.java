@@ -10,6 +10,7 @@ public class ProductDto {
     Double price;
     boolean enabled;
 
+/*
     public ProductDto(Product product) {
         this.setId(product.getId());
         this.setCode(product.getCode());
@@ -18,6 +19,7 @@ public class ProductDto {
         this.setPrice(product.getPrice());
         this.setEnabled(product.getEnable());
     }
+*/
 
 
     public ProductDto(String code, String name, String description, Double price, boolean enabled) {

@@ -8,7 +8,7 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+
 @Entity
 @Table(name = "products")
 public class Product {
@@ -24,8 +24,10 @@ public class Product {
 
 
 
-    @OneToMany(mappedBy = "product")
+/*
+    @ManyToOne
     protected List<CartQty> products = new ArrayList<>();
+*/
 
     public Product(ProductDto productDto){
         this.code = productDto.getCode();

@@ -2,7 +2,6 @@ package com.example.rizzboys;
 
 import com.example.rizzboys.dto.AddToCartDto;
 import com.example.rizzboys.dto.CustomerIdDto;
-import com.example.rizzboys.dto.ProductDto;
 import com.example.rizzboys.model.Cart;
 import com.example.rizzboys.model.Customer;
 import com.example.rizzboys.model.Product;

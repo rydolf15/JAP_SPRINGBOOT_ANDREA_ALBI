@@ -25,16 +25,4 @@ public class CartEntryDto {
         this.setQty(cartQty.getQuantity().doubleValue());
     }
 
-    @Override
-    public String toString() {
-        return "CartEntryDto{" +
-                "idProduct=" + idProduct +
-                ", idCartQty=" + idCartQty +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", qty=" + qty +
-                ", total=" + total +
-                '}';
-    }
 }

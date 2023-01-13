@@ -1,19 +1,26 @@
 package com.example.rizzboys.service;
 
+import com.example.rizzboys.dto.ProductDto;
+import com.example.rizzboys.dto.ProductIdDto;
+import com.example.rizzboys.dto.ProductKeysDto;
 import com.example.rizzboys.exception.NotFoundException;
 import com.example.rizzboys.model.Product;
 
 import java.util.List;
-import java.util.Optional;
 
 
 public interface ProductService {
 
-    Product saveProduct(Product p);
 
-    void removeProduct(Product p);
+    void addProduct(ProductDto productDto);
 
-    void removeAll();
+    void changeProduct(ProductDto productDto);
+
+    ProductDto getProductData(ProductKeysDto productKeysDto);
+
+    void deleteProduct(ProductIdDto productIdDto);
+
+    void switchEnabledState(ProductIdDto productIdDto);
 
     List<Product> findAllProducts();
 

@@ -21,4 +21,7 @@ public class CartQty {
     @ManyToOne
     private Product product;
 
+    public Cart getCart() {
+        return cart;
+    }
 }

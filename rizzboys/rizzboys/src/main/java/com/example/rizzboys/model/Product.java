@@ -1,7 +1,6 @@
 package com.example.rizzboys.model;
 
 import com.example.rizzboys.dto.ProductDto;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 

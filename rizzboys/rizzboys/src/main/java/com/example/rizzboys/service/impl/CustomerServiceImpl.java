@@ -1,7 +1,7 @@
 package com.example.rizzboys.service.impl;
 
 import com.example.rizzboys.dto.LoginRequestDto;
-import com.example.rizzboys.dto.StringFilterDto;
+import com.example.rizzboys.dto.UserDto;
 import com.example.rizzboys.exception.NotFoundException;
 import com.example.rizzboys.model.Customer;
 import com.example.rizzboys.repos.CustomerRespository;
@@ -17,18 +17,26 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     CustomerRespository customerRespository;
 
+    //ASK
     @Override
-    public String login(LoginRequestDto loginRequestDto) throws NotFoundException {
-        Customer customer = customerRespository.findByUsername(loginRequestDto.getUsername());
-        return "Welcome";
+    public UserDto login(LoginRequestDto loginRequestDto) throws NotFoundException {
+        Customer customer = new Customer();
+        try {
+            customer.setFirstName(customerRespository.findByUsername(loginRequestDto.getUsername())
+                    .getFirstName());
+            customer.setLastName((customerRespository.findCustomerByLoginCredentials(loginRequestDto.getPassword())
+                    .getLastName()));
+        } catch(NotFoundException notFoundException) {
+            System.out.println("Username or password is incorrect!");
+        }
+        UserDto userDto = new UserDto();
+        userDto.
+        return null;
     }
-
     @Override
     public Customer saveCustomer(Customer c) {
         return customerRespository.save(c);
     }
-
-
 
     @Override
     public void removeCustomer(Customer c) {

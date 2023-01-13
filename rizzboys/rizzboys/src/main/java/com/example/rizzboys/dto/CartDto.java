@@ -10,6 +10,4 @@ public class CartDto {
     Long idCustomer;
     List<CartEntryDto> content;
 
-
-
 }

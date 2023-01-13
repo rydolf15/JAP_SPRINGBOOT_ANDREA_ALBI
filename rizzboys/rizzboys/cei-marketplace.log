@@ -2168,3 +2168,358 @@
             on c2_0.id=c1_0.customer_id 
     where
         c1_0.id=?
+2023-01-12T19:28:11.797+01:00  WARN 20416 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-01-12T19:28:12.038+01:00  WARN 20416 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-01-12T19:28:12.298+01:00  WARN 20416 --- [main] o.h.cfg.annotations.EntityBinder         : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.example.rizzboys.model.Catalog
+2023-01-12T19:28:12.838+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    
+    create table cart (
+       id bigint not null auto_increment,
+        date date not null,
+        state varchar(255),
+        customer_id bigint,
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T19:28:12.852+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    
+    create table cart_qty (
+       cart_qty_id bigint not null auto_increment,
+        quantity integer,
+        cart_id bigint,
+        product_id bigint,
+        primary key (cart_qty_id)
+    ) engine=InnoDB
+2023-01-12T19:28:12.862+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    
+    create table customer (
+       id bigint not null auto_increment,
+        first_name varchar(255) not null,
+        last_name varchar(255) not null,
+        password varchar(255) not null,
+        username varchar(255) not null,
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T19:28:12.870+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    
+    create table product (
+       dtype varchar(31) not null,
+        id bigint not null auto_increment,
+        code varchar(255) not null,
+        description varchar(255),
+        enable bit,
+        name varchar(255) not null,
+        price float(53),
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T19:28:12.880+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    
+    alter table customer 
+       drop index UK_irnrrncatp2fvw52vp45j7rlw
+2023-01-12T19:28:12.888+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    
+    alter table customer 
+       add constraint UK_irnrrncatp2fvw52vp45j7rlw unique (username)
+2023-01-12T19:28:12.896+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    
+    alter table product 
+       drop index UK_h3w5r1mx6d0e5c6um32dgyjej
+2023-01-12T19:28:12.898+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    
+    alter table product 
+       add constraint UK_h3w5r1mx6d0e5c6um32dgyjej unique (code)
+2023-01-12T19:28:12.913+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart 
+       add constraint FKdebwvad6pp1ekiqy5jtixqbaj 
+       foreign key (customer_id) 
+       references customer (id)
+2023-01-12T19:28:12.943+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart_qty 
+       add constraint FKmjwrg98a6xpeamfgxrifx5vwi 
+       foreign key (cart_id) 
+       references cart (id)
+2023-01-12T19:28:12.968+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart_qty 
+       add constraint FKfib2pg2q8myfa99nxrbpv7vn5 
+       foreign key (product_id) 
+       references product (id)
+2023-01-12T19:28:13.781+01:00  WARN 20416 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-12T19:28:14.412+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    /* delete 
+    from
+        Product x */ delete 
+    from
+        product
+2023-01-12T19:28:14.419+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    /* delete 
+    from
+        Cart x */ delete 
+    from
+        cart
+2023-01-12T19:28:14.422+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    /* delete 
+    from
+        Customer x */ delete 
+    from
+        customer
+2023-01-12T19:28:14.436+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Customer
+        */ insert 
+    into
+        customer (first_name, last_name, password, username) 
+    values
+        (?, ?, ?, ?)
+2023-01-12T19:28:14.450+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Customer
+        */ insert 
+    into
+        customer (first_name, last_name, password, username) 
+    values
+        (?, ?, ?, ?)
+2023-01-12T19:28:14.481+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    /* <criteria> */ select
+        c1_0.id,
+        c1_0.first_name,
+        c1_0.last_name,
+        c1_0.password,
+        c1_0.username 
+    from
+        customer c1_0
+2023-01-12T19:28:14.489+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Cart
+        */ insert 
+    into
+        cart (customer_id, date, state) 
+    values
+        (?, ?, ?)
+2023-01-12T19:28:14.499+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Product
+        */ insert 
+    into
+        product (code, description, enable, name, price, dtype) 
+    values
+        (?, ?, ?, ?, ?, 'Product')
+2023-01-12T19:28:14.503+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Product
+        */ insert 
+    into
+        product (code, description, enable, name, price, dtype) 
+    values
+        (?, ?, ?, ?, ?, 'Product')
+2023-01-12T19:28:14.513+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.dtype,
+        p1_0.code,
+        p1_0.description,
+        p1_0.enable,
+        p1_0.name,
+        p1_0.price 
+    from
+        product p1_0 
+    where
+        p1_0.id=?
+2023-01-12T19:28:14.573+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T19:28:14.578+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.first_name,
+        c1_0.last_name,
+        c1_0.password,
+        c1_0.username 
+    from
+        customer c1_0 
+    where
+        c1_0.id=?
+2023-01-12T19:28:14.587+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    select
+        q1_0.product_id,
+        q1_0.cart_qty_id,
+        c1_0.id,
+        c2_0.id,
+        c2_0.first_name,
+        c2_0.last_name,
+        c2_0.password,
+        c2_0.username,
+        c1_0.date,
+        c1_0.state,
+        q1_0.quantity 
+    from
+        cart_qty q1_0 
+    left join
+        cart c1_0 
+            on c1_0.id=q1_0.cart_id 
+    left join
+        customer c2_0 
+            on c2_0.id=c1_0.customer_id 
+    where
+        q1_0.product_id=?
+2023-01-12T19:28:14.591+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Cart
+        */ insert 
+    into
+        cart (customer_id, date, state) 
+    values
+        (?, ?, ?)
+2023-01-12T19:28:14.598+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.CartQty
+        */ insert 
+    into
+        cart_qty (cart_id, product_id, quantity) 
+    values
+        (?, ?, ?)
+2023-01-12T19:28:14.607+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.dtype,
+        p1_0.code,
+        p1_0.description,
+        p1_0.enable,
+        p1_0.name,
+        p1_0.price 
+    from
+        product p1_0 
+    where
+        p1_0.id=?
+2023-01-12T19:28:14.614+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    select
+        c1_0.cart_qty_id,
+        c2_0.id,
+        c3_0.id,
+        c3_0.first_name,
+        c3_0.last_name,
+        c3_0.password,
+        c3_0.username,
+        c2_0.date,
+        c2_0.state,
+        p1_0.id,
+        p1_0.dtype,
+        p1_0.code,
+        p1_0.description,
+        p1_0.enable,
+        p1_0.name,
+        p1_0.price,
+        c1_0.quantity 
+    from
+        cart_qty c1_0 
+    left join
+        cart c2_0 
+            on c2_0.id=c1_0.cart_id 
+    left join
+        customer c3_0 
+            on c3_0.id=c2_0.customer_id 
+    left join
+        product p1_0 
+            on p1_0.id=c1_0.product_id 
+    where
+        c1_0.cart_qty_id=?
+2023-01-12T19:28:14.628+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T19:28:14.633+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.first_name,
+        c1_0.last_name,
+        c1_0.password,
+        c1_0.username 
+    from
+        customer c1_0 
+    where
+        c1_0.id=?
+2023-01-12T19:28:14.641+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    select
+        c1_0.cart_id,
+        c1_0.cart_qty_id,
+        p1_0.id,
+        p1_0.dtype,
+        p1_0.code,
+        p1_0.description,
+        p1_0.enable,
+        p1_0.name,
+        p1_0.price,
+        c1_0.quantity 
+    from
+        cart_qty c1_0 
+    left join
+        product p1_0 
+            on p1_0.id=c1_0.product_id 
+    where
+        c1_0.cart_id=?
+2023-01-12T19:28:14.647+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c2_0.id,
+        c2_0.first_name,
+        c2_0.last_name,
+        c2_0.password,
+        c2_0.username,
+        c1_0.date,
+        c1_0.state 
+    from
+        cart c1_0 
+    left join
+        customer c2_0 
+            on c2_0.id=c1_0.customer_id 
+    where
+        c1_0.id=?
+2023-01-12T19:28:14.660+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T19:28:14.667+01:00 DEBUG 20416 --- [main] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.first_name,
+        c1_0.last_name,
+        c1_0.password,
+        c1_0.username 
+    from
+        customer c1_0 
+    where
+        c1_0.id=?

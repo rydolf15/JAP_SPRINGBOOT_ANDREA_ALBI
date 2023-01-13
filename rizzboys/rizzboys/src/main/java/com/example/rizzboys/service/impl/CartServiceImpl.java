@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -56,7 +55,6 @@ public class CartServiceImpl implements CartService {
             dbCart.setDate(LocalDate.now());
             dbCart.setState("DRAFT");
             dbCart.setCustomer(customer);
-            //I don't understand the purpose of the CartQty class - Andrea
         }
         // now add the product to the cart ...
         CartQty cq = new CartQty();
@@ -88,6 +86,55 @@ public class CartServiceImpl implements CartService {
         }
         cartDto.setContent(content);
         return cartDto;
+    }
+
+    @Override
+    public CartDto removeFromCart(RemoveFromCartDto removeFromCartDto) {
+        //retrieve the cartQty
+        CartQty cartQty = cartQtyRepository.findCartQtyById(removeFromCartDto.getIdQty());
+
+        //find the customer to whom it belongs
+        Customer customer = customerRespository.findCustomerById(cartQtyRepository.findCartQtyById(cartQty.getCartQty_id())
+                                                                    .getCart().getCustomer().getId());
+        //find the cart to whom it belongs
+        Cart cart = cartRepository.findCartForCustomer(customer.getId());
+
+        //retrieve all the cartQties
+        List<CartQty> cartQties = cart.getCartQtys();
+
+        //remove the cartQty with the specified id
+        cartQties.remove(cartQty);
+
+        //return the CartDto object after filling all its attributes
+        CartDto cartDto = new CartDto();
+        cartDto.setId(cart.getId());
+        cartDto.setIdCustomer(customer.getId());
+        List<CartEntryDto> content = new ArrayList<>();
+        CartEntryDto cartEntryDto;
+        for(CartQty cartQty1 : cartQties) {
+            cartEntryDto = new CartEntryDto(cartQty1);
+            content.add(cartEntryDto);
+        }
+        cartDto.setContent(content);
+        return cartDto;
+
+
+    }
+
+
+    //ASK
+    @Override
+    public void goToCheckout(CustomerIdDto customerIdDto) {
+        Cart c = cartRepository.findCartForCustomer(customerIdDto.getCustomerId());
+        c.setState("CHECKOUT");
+        cartRepository.save(c);
+    }
+
+    @Override
+    public List<Product> searchInCatalog(String criterion) {
+        String s = "%" + criterion + "%";
+        var found = productRepository.searchInCatalog(s);
+        return found;
     }
 
     @Override

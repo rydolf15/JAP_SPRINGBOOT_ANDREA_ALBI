@@ -2190,3 +2190,1815 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'springprojecttry1.customer_c
         cart_qty (cart_id, product_id, quantity) 
     values
         (?, ?, ?)
+2023-01-12T18:33:35.566+01:00  WARN 25380 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-01-12T18:33:35.660+01:00  WARN 25380 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-01-12T18:33:35.761+01:00  WARN 25380 --- [main] o.h.cfg.annotations.EntityBinder         : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.example.rizzboys.model.Catalog
+2023-01-12T18:33:36.821+01:00  WARN 25380 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-12T18:33:56.617+01:00  WARN 13548 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-01-12T18:33:56.714+01:00  WARN 13548 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-01-12T18:33:56.818+01:00  WARN 13548 --- [main] o.h.cfg.annotations.EntityBinder         : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.example.rizzboys.model.Catalog
+2023-01-12T18:33:57.261+01:00 DEBUG 13548 --- [main] org.hibernate.SQL                        : 
+    
+    create table cart (
+       id bigint not null auto_increment,
+        date date not null,
+        state varchar(255),
+        customer_id bigint,
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T18:33:57.284+01:00 DEBUG 13548 --- [main] org.hibernate.SQL                        : 
+    
+    create table cart_qty (
+       cart_qty_id bigint not null auto_increment,
+        quantity integer,
+        cart_id bigint,
+        product_id bigint,
+        primary key (cart_qty_id)
+    ) engine=InnoDB
+2023-01-12T18:33:57.299+01:00 DEBUG 13548 --- [main] org.hibernate.SQL                        : 
+    
+    create table customer (
+       id bigint not null auto_increment,
+        first_name varchar(255) not null,
+        last_name varchar(255) not null,
+        password varchar(255) not null,
+        username varchar(255) not null,
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T18:33:57.310+01:00 DEBUG 13548 --- [main] org.hibernate.SQL                        : 
+    
+    create table product (
+       dtype varchar(31) not null,
+        id bigint not null auto_increment,
+        code varchar(255) not null,
+        description varchar(255),
+        enable bit,
+        name varchar(255) not null,
+        price float(53),
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T18:33:57.320+01:00 DEBUG 13548 --- [main] org.hibernate.SQL                        : 
+    
+    alter table customer 
+       drop index UK_irnrrncatp2fvw52vp45j7rlw
+2023-01-12T18:33:57.329+01:00 DEBUG 13548 --- [main] org.hibernate.SQL                        : 
+    
+    alter table customer 
+       add constraint UK_irnrrncatp2fvw52vp45j7rlw unique (username)
+2023-01-12T18:33:57.341+01:00 DEBUG 13548 --- [main] org.hibernate.SQL                        : 
+    
+    alter table product 
+       drop index UK_h3w5r1mx6d0e5c6um32dgyjej
+2023-01-12T18:33:57.342+01:00 DEBUG 13548 --- [main] org.hibernate.SQL                        : 
+    
+    alter table product 
+       add constraint UK_h3w5r1mx6d0e5c6um32dgyjej unique (code)
+2023-01-12T18:33:57.352+01:00 DEBUG 13548 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart 
+       add constraint FKdebwvad6pp1ekiqy5jtixqbaj 
+       foreign key (customer_id) 
+       references customer (id)
+2023-01-12T18:33:57.381+01:00 DEBUG 13548 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart_qty 
+       add constraint FKmjwrg98a6xpeamfgxrifx5vwi 
+       foreign key (cart_id) 
+       references cart (id)
+2023-01-12T18:33:57.410+01:00 DEBUG 13548 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart_qty 
+       add constraint FKfib2pg2q8myfa99nxrbpv7vn5 
+       foreign key (product_id) 
+       references product (id)
+2023-01-12T18:33:57.848+01:00  WARN 13548 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-12T18:36:58.518+01:00 DEBUG 13548 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Customer
+        */ insert 
+    into
+        customer (first_name, last_name, password, username) 
+    values
+        (?, ?, ?, ?)
+2023-01-12T18:44:24.215+01:00  WARN 24404 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-01-12T18:44:24.310+01:00  WARN 24404 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-01-12T18:44:24.418+01:00  WARN 24404 --- [main] o.h.cfg.annotations.EntityBinder         : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.example.rizzboys.model.Catalog
+2023-01-12T18:44:25.245+01:00  WARN 24404 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-12T18:48:06.726+01:00 DEBUG 24404 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Customer
+        */ insert 
+    into
+        customer (first_name, last_name, password, username) 
+    values
+        (?, ?, ?, ?)
+2023-01-12T18:49:17.180+01:00 DEBUG 24404 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Product
+        */ insert 
+    into
+        product (code, description, enable, name, price, dtype) 
+    values
+        (?, ?, ?, ?, ?, 'Product')
+2023-01-12T18:53:04.304+01:00 DEBUG 24404 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.dtype,
+        p1_0.code,
+        p1_0.description,
+        p1_0.enable,
+        p1_0.name,
+        p1_0.price 
+    from
+        product p1_0 
+    where
+        p1_0.id=?
+2023-01-12T18:53:04.368+01:00 DEBUG 24404 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T18:53:04.372+01:00 DEBUG 24404 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.first_name,
+        c1_0.last_name,
+        c1_0.password,
+        c1_0.username 
+    from
+        customer c1_0 
+    where
+        c1_0.id=?
+2023-01-12T18:53:04.376+01:00 DEBUG 24404 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Cart
+        */ insert 
+    into
+        cart (customer_id, date, state) 
+    values
+        (?, ?, ?)
+2023-01-12T18:53:04.388+01:00 DEBUG 24404 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.CartQty
+        */ insert 
+    into
+        cart_qty (cart_id, product_id, quantity) 
+    values
+        (?, ?, ?)
+2023-01-12T19:00:41.635+01:00 DEBUG 24404 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T19:00:41.642+01:00 ERROR 24404 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "com.example.rizzboys.model.Cart.getId()" because "c" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "com.example.rizzboys.model.Cart.getId()" because "c" is null
+	at com.example.rizzboys.service.impl.CartServiceImpl.displayCart(CartServiceImpl.java:80) ~[classes/:na]
+	at com.example.rizzboys.controller.CartController.displayCart(CartController.java:36) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1080) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:973) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1003) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:895) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:705) ~[tomcat-embed-core-10.1.1.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:880) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814) ~[tomcat-embed-core-10.1.1.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1739) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2023-01-12T19:04:55.218+01:00  WARN 7252 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-01-12T19:04:55.332+01:00  WARN 7252 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-01-12T19:04:55.435+01:00  WARN 7252 --- [main] o.h.cfg.annotations.EntityBinder         : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.example.rizzboys.model.Catalog
+2023-01-12T19:04:56.258+01:00  WARN 7252 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-12T19:05:51.025+01:00  WARN 24128 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-01-12T19:05:51.106+01:00  WARN 24128 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-01-12T19:05:51.193+01:00  WARN 24128 --- [main] o.h.cfg.annotations.EntityBinder         : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.example.rizzboys.model.Catalog
+2023-01-12T19:05:51.601+01:00 DEBUG 24128 --- [main] org.hibernate.SQL                        : 
+    
+    create table cart (
+       id bigint not null auto_increment,
+        date date not null,
+        state varchar(255),
+        customer_id bigint,
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T19:05:51.623+01:00 DEBUG 24128 --- [main] org.hibernate.SQL                        : 
+    
+    create table cart_qty (
+       cart_qty_id bigint not null auto_increment,
+        quantity integer,
+        cart_id bigint,
+        product_id bigint,
+        primary key (cart_qty_id)
+    ) engine=InnoDB
+2023-01-12T19:05:51.634+01:00 DEBUG 24128 --- [main] org.hibernate.SQL                        : 
+    
+    create table customer (
+       id bigint not null auto_increment,
+        first_name varchar(255) not null,
+        last_name varchar(255) not null,
+        password varchar(255) not null,
+        username varchar(255) not null,
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T19:05:51.647+01:00 DEBUG 24128 --- [main] org.hibernate.SQL                        : 
+    
+    create table product (
+       dtype varchar(31) not null,
+        id bigint not null auto_increment,
+        code varchar(255) not null,
+        description varchar(255),
+        enable bit,
+        name varchar(255) not null,
+        price float(53),
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T19:05:51.661+01:00 DEBUG 24128 --- [main] org.hibernate.SQL                        : 
+    
+    alter table customer 
+       drop index UK_irnrrncatp2fvw52vp45j7rlw
+2023-01-12T19:05:51.672+01:00 DEBUG 24128 --- [main] org.hibernate.SQL                        : 
+    
+    alter table customer 
+       add constraint UK_irnrrncatp2fvw52vp45j7rlw unique (username)
+2023-01-12T19:05:51.682+01:00 DEBUG 24128 --- [main] org.hibernate.SQL                        : 
+    
+    alter table product 
+       drop index UK_h3w5r1mx6d0e5c6um32dgyjej
+2023-01-12T19:05:51.684+01:00 DEBUG 24128 --- [main] org.hibernate.SQL                        : 
+    
+    alter table product 
+       add constraint UK_h3w5r1mx6d0e5c6um32dgyjej unique (code)
+2023-01-12T19:05:51.696+01:00 DEBUG 24128 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart 
+       add constraint FKdebwvad6pp1ekiqy5jtixqbaj 
+       foreign key (customer_id) 
+       references customer (id)
+2023-01-12T19:05:51.732+01:00 DEBUG 24128 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart_qty 
+       add constraint FKmjwrg98a6xpeamfgxrifx5vwi 
+       foreign key (cart_id) 
+       references cart (id)
+2023-01-12T19:05:51.774+01:00 DEBUG 24128 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart_qty 
+       add constraint FKfib2pg2q8myfa99nxrbpv7vn5 
+       foreign key (product_id) 
+       references product (id)
+2023-01-12T19:05:52.163+01:00  WARN 24128 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-12T19:06:14.639+01:00 DEBUG 24128 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Customer
+        */ insert 
+    into
+        customer (first_name, last_name, password, username) 
+    values
+        (?, ?, ?, ?)
+2023-01-12T19:06:22.848+01:00 DEBUG 24128 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Product
+        */ insert 
+    into
+        product (code, description, enable, name, price, dtype) 
+    values
+        (?, ?, ?, ?, ?, 'Product')
+2023-01-12T19:06:29.274+01:00 DEBUG 24128 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.dtype,
+        p1_0.code,
+        p1_0.description,
+        p1_0.enable,
+        p1_0.name,
+        p1_0.price 
+    from
+        product p1_0 
+    where
+        p1_0.id=?
+2023-01-12T19:06:29.373+01:00 DEBUG 24128 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T19:06:29.379+01:00 DEBUG 24128 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.first_name,
+        c1_0.last_name,
+        c1_0.password,
+        c1_0.username 
+    from
+        customer c1_0 
+    where
+        c1_0.id=?
+2023-01-12T19:06:29.387+01:00 DEBUG 24128 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Cart
+        */ insert 
+    into
+        cart (customer_id, date, state) 
+    values
+        (?, ?, ?)
+2023-01-12T19:06:29.409+01:00 DEBUG 24128 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.CartQty
+        */ insert 
+    into
+        cart_qty (cart_id, product_id, quantity) 
+    values
+        (?, ?, ?)
+2023-01-12T19:06:35.728+01:00 DEBUG 24128 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T19:06:35.741+01:00 ERROR 24128 --- [http-nio-8080-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "com.example.rizzboys.model.Cart.getId()" because "c" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "com.example.rizzboys.model.Cart.getId()" because "c" is null
+	at com.example.rizzboys.service.impl.CartServiceImpl.displayCart(CartServiceImpl.java:80) ~[classes/:na]
+	at com.example.rizzboys.controller.CartController.displayCart(CartController.java:36) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1080) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:973) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1003) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:895) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:705) ~[tomcat-embed-core-10.1.1.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:880) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814) ~[tomcat-embed-core-10.1.1.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1739) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2023-01-12T19:17:25.932+01:00  WARN 24544 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-01-12T19:17:26.029+01:00  WARN 24544 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-01-12T19:17:26.127+01:00  WARN 24544 --- [main] o.h.cfg.annotations.EntityBinder         : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.example.rizzboys.model.Catalog
+2023-01-12T19:17:27.060+01:00  WARN 24544 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-12T19:17:50.366+01:00  WARN 10708 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-01-12T19:17:50.437+01:00  WARN 10708 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-01-12T19:17:50.532+01:00  WARN 10708 --- [main] o.h.cfg.annotations.EntityBinder         : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.example.rizzboys.model.Catalog
+2023-01-12T19:17:51.005+01:00 DEBUG 10708 --- [main] org.hibernate.SQL                        : 
+    
+    create table cart (
+       id bigint not null auto_increment,
+        date date not null,
+        state varchar(255),
+        customer_id bigint,
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T19:17:51.048+01:00 DEBUG 10708 --- [main] org.hibernate.SQL                        : 
+    
+    create table cart_qty (
+       cart_qty_id bigint not null auto_increment,
+        quantity integer,
+        cart_id bigint,
+        product_id bigint,
+        primary key (cart_qty_id)
+    ) engine=InnoDB
+2023-01-12T19:17:51.063+01:00 DEBUG 10708 --- [main] org.hibernate.SQL                        : 
+    
+    create table customer (
+       id bigint not null auto_increment,
+        first_name varchar(255) not null,
+        last_name varchar(255) not null,
+        password varchar(255) not null,
+        username varchar(255) not null,
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T19:17:51.076+01:00 DEBUG 10708 --- [main] org.hibernate.SQL                        : 
+    
+    create table product (
+       dtype varchar(31) not null,
+        id bigint not null auto_increment,
+        code varchar(255) not null,
+        description varchar(255),
+        enable bit,
+        name varchar(255) not null,
+        price float(53),
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T19:17:51.092+01:00 DEBUG 10708 --- [main] org.hibernate.SQL                        : 
+    
+    alter table customer 
+       drop index UK_irnrrncatp2fvw52vp45j7rlw
+2023-01-12T19:17:51.115+01:00 DEBUG 10708 --- [main] org.hibernate.SQL                        : 
+    
+    alter table customer 
+       add constraint UK_irnrrncatp2fvw52vp45j7rlw unique (username)
+2023-01-12T19:17:51.142+01:00 DEBUG 10708 --- [main] org.hibernate.SQL                        : 
+    
+    alter table product 
+       drop index UK_h3w5r1mx6d0e5c6um32dgyjej
+2023-01-12T19:17:51.144+01:00 DEBUG 10708 --- [main] org.hibernate.SQL                        : 
+    
+    alter table product 
+       add constraint UK_h3w5r1mx6d0e5c6um32dgyjej unique (code)
+2023-01-12T19:17:51.157+01:00 DEBUG 10708 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart 
+       add constraint FKdebwvad6pp1ekiqy5jtixqbaj 
+       foreign key (customer_id) 
+       references customer (id)
+2023-01-12T19:17:51.194+01:00 DEBUG 10708 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart_qty 
+       add constraint FKmjwrg98a6xpeamfgxrifx5vwi 
+       foreign key (cart_id) 
+       references cart (id)
+2023-01-12T19:17:51.237+01:00 DEBUG 10708 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart_qty 
+       add constraint FKfib2pg2q8myfa99nxrbpv7vn5 
+       foreign key (product_id) 
+       references product (id)
+2023-01-12T19:17:51.725+01:00  WARN 10708 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-12T19:18:12.338+01:00 DEBUG 10708 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Customer
+        */ insert 
+    into
+        customer (first_name, last_name, password, username) 
+    values
+        (?, ?, ?, ?)
+2023-01-12T19:18:19.675+01:00 DEBUG 10708 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Product
+        */ insert 
+    into
+        product (code, description, enable, name, price, dtype) 
+    values
+        (?, ?, ?, ?, ?, 'Product')
+2023-01-12T19:18:26.047+01:00 DEBUG 10708 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.dtype,
+        p1_0.code,
+        p1_0.description,
+        p1_0.enable,
+        p1_0.name,
+        p1_0.price 
+    from
+        product p1_0 
+    where
+        p1_0.id=?
+2023-01-12T19:18:26.114+01:00 DEBUG 10708 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T19:18:26.120+01:00 DEBUG 10708 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.first_name,
+        c1_0.last_name,
+        c1_0.password,
+        c1_0.username 
+    from
+        customer c1_0 
+    where
+        c1_0.id=?
+2023-01-12T19:18:26.125+01:00 DEBUG 10708 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Cart
+        */ insert 
+    into
+        cart (customer_id, date, state) 
+    values
+        (?, ?, ?)
+2023-01-12T19:18:26.140+01:00 DEBUG 10708 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.CartQty
+        */ insert 
+    into
+        cart_qty (cart_id, product_id, quantity) 
+    values
+        (?, ?, ?)
+2023-01-12T19:22:58.850+01:00 DEBUG 10708 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T19:22:58.860+01:00 ERROR 10708 --- [http-nio-8080-exec-6] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "com.example.rizzboys.model.Cart.getId()" because "c" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "com.example.rizzboys.model.Cart.getId()" because "c" is null
+	at com.example.rizzboys.service.impl.CartServiceImpl.displayCart(CartServiceImpl.java:80) ~[classes/:na]
+	at com.example.rizzboys.controller.CartController.displayCart(CartController.java:36) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1080) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:973) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1003) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:895) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:705) ~[tomcat-embed-core-10.1.1.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:880) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814) ~[tomcat-embed-core-10.1.1.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1739) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2023-01-12T19:23:41.883+01:00 DEBUG 10708 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T19:23:41.888+01:00 ERROR 10708 --- [http-nio-8080-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "com.example.rizzboys.model.Cart.getId()" because "c" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "com.example.rizzboys.model.Cart.getId()" because "c" is null
+	at com.example.rizzboys.service.impl.CartServiceImpl.displayCart(CartServiceImpl.java:80) ~[classes/:na]
+	at com.example.rizzboys.controller.CartController.displayCart(CartController.java:36) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1080) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:973) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1003) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:895) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:705) ~[tomcat-embed-core-10.1.1.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:880) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814) ~[tomcat-embed-core-10.1.1.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1739) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2023-01-12T19:24:32.859+01:00  WARN 3420 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-01-12T19:24:32.955+01:00  WARN 3420 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-01-12T19:24:33.056+01:00  WARN 3420 --- [main] o.h.cfg.annotations.EntityBinder         : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.example.rizzboys.model.Catalog
+2023-01-12T19:24:33.516+01:00 DEBUG 3420 --- [main] org.hibernate.SQL                        : 
+    
+    create table cart (
+       id bigint not null auto_increment,
+        date date not null,
+        state varchar(255),
+        customer_id bigint,
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T19:24:33.535+01:00 DEBUG 3420 --- [main] org.hibernate.SQL                        : 
+    
+    create table cart_qty (
+       cart_qty_id bigint not null auto_increment,
+        quantity integer,
+        cart_id bigint,
+        product_id bigint,
+        primary key (cart_qty_id)
+    ) engine=InnoDB
+2023-01-12T19:24:33.546+01:00 DEBUG 3420 --- [main] org.hibernate.SQL                        : 
+    
+    create table customer (
+       id bigint not null auto_increment,
+        first_name varchar(255) not null,
+        last_name varchar(255) not null,
+        password varchar(255) not null,
+        username varchar(255) not null,
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T19:24:33.555+01:00 DEBUG 3420 --- [main] org.hibernate.SQL                        : 
+    
+    create table product (
+       dtype varchar(31) not null,
+        id bigint not null auto_increment,
+        code varchar(255) not null,
+        description varchar(255),
+        enable bit,
+        name varchar(255) not null,
+        price float(53),
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T19:24:33.566+01:00 DEBUG 3420 --- [main] org.hibernate.SQL                        : 
+    
+    alter table customer 
+       drop index UK_irnrrncatp2fvw52vp45j7rlw
+2023-01-12T19:24:33.574+01:00 DEBUG 3420 --- [main] org.hibernate.SQL                        : 
+    
+    alter table customer 
+       add constraint UK_irnrrncatp2fvw52vp45j7rlw unique (username)
+2023-01-12T19:24:33.583+01:00 DEBUG 3420 --- [main] org.hibernate.SQL                        : 
+    
+    alter table product 
+       drop index UK_h3w5r1mx6d0e5c6um32dgyjej
+2023-01-12T19:24:33.585+01:00 DEBUG 3420 --- [main] org.hibernate.SQL                        : 
+    
+    alter table product 
+       add constraint UK_h3w5r1mx6d0e5c6um32dgyjej unique (code)
+2023-01-12T19:24:33.595+01:00 DEBUG 3420 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart 
+       add constraint FKdebwvad6pp1ekiqy5jtixqbaj 
+       foreign key (customer_id) 
+       references customer (id)
+2023-01-12T19:24:33.630+01:00 DEBUG 3420 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart_qty 
+       add constraint FKmjwrg98a6xpeamfgxrifx5vwi 
+       foreign key (cart_id) 
+       references cart (id)
+2023-01-12T19:24:33.658+01:00 DEBUG 3420 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart_qty 
+       add constraint FKfib2pg2q8myfa99nxrbpv7vn5 
+       foreign key (product_id) 
+       references product (id)
+2023-01-12T19:24:34.077+01:00  WARN 3420 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-12T19:25:27.371+01:00 DEBUG 3420 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Customer
+        */ insert 
+    into
+        customer (first_name, last_name, password, username) 
+    values
+        (?, ?, ?, ?)
+2023-01-12T19:25:30.143+01:00 DEBUG 3420 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Product
+        */ insert 
+    into
+        product (code, description, enable, name, price, dtype) 
+    values
+        (?, ?, ?, ?, ?, 'Product')
+2023-01-12T19:26:25.767+01:00 DEBUG 3420 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.dtype,
+        p1_0.code,
+        p1_0.description,
+        p1_0.enable,
+        p1_0.name,
+        p1_0.price 
+    from
+        product p1_0 
+    where
+        p1_0.id=?
+2023-01-12T19:26:25.847+01:00 DEBUG 3420 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T19:26:25.856+01:00 DEBUG 3420 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.first_name,
+        c1_0.last_name,
+        c1_0.password,
+        c1_0.username 
+    from
+        customer c1_0 
+    where
+        c1_0.id=?
+2023-01-12T19:26:25.863+01:00 DEBUG 3420 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Cart
+        */ insert 
+    into
+        cart (customer_id, date, state) 
+    values
+        (?, ?, ?)
+2023-01-12T19:26:25.880+01:00 DEBUG 3420 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.CartQty
+        */ insert 
+    into
+        cart_qty (cart_id, product_id, quantity) 
+    values
+        (?, ?, ?)
+2023-01-12T19:33:40.764+01:00  WARN 1968 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-01-12T19:33:40.840+01:00  WARN 1968 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-01-12T19:33:40.925+01:00  WARN 1968 --- [main] o.h.cfg.annotations.EntityBinder         : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.example.rizzboys.model.Catalog
+2023-01-12T19:33:41.318+01:00 DEBUG 1968 --- [main] org.hibernate.SQL                        : 
+    
+    create table cart (
+       id bigint not null auto_increment,
+        date date not null,
+        state varchar(255),
+        customer_id bigint,
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T19:33:41.331+01:00 DEBUG 1968 --- [main] org.hibernate.SQL                        : 
+    
+    create table cart_qty (
+       cart_qty_id bigint not null auto_increment,
+        quantity integer,
+        cart_id bigint,
+        product_id bigint,
+        primary key (cart_qty_id)
+    ) engine=InnoDB
+2023-01-12T19:33:41.338+01:00 DEBUG 1968 --- [main] org.hibernate.SQL                        : 
+    
+    create table customer (
+       id bigint not null auto_increment,
+        first_name varchar(255) not null,
+        last_name varchar(255) not null,
+        password varchar(255) not null,
+        username varchar(255) not null,
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T19:33:41.346+01:00 DEBUG 1968 --- [main] org.hibernate.SQL                        : 
+    
+    create table product (
+       dtype varchar(31) not null,
+        id bigint not null auto_increment,
+        code varchar(255) not null,
+        description varchar(255),
+        enable bit,
+        name varchar(255) not null,
+        price float(53),
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T19:33:41.354+01:00 DEBUG 1968 --- [main] org.hibernate.SQL                        : 
+    
+    alter table customer 
+       drop index UK_irnrrncatp2fvw52vp45j7rlw
+2023-01-12T19:33:41.363+01:00 DEBUG 1968 --- [main] org.hibernate.SQL                        : 
+    
+    alter table customer 
+       add constraint UK_irnrrncatp2fvw52vp45j7rlw unique (username)
+2023-01-12T19:33:41.370+01:00 DEBUG 1968 --- [main] org.hibernate.SQL                        : 
+    
+    alter table product 
+       drop index UK_h3w5r1mx6d0e5c6um32dgyjej
+2023-01-12T19:33:41.372+01:00 DEBUG 1968 --- [main] org.hibernate.SQL                        : 
+    
+    alter table product 
+       add constraint UK_h3w5r1mx6d0e5c6um32dgyjej unique (code)
+2023-01-12T19:33:41.380+01:00 DEBUG 1968 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart 
+       add constraint FKdebwvad6pp1ekiqy5jtixqbaj 
+       foreign key (customer_id) 
+       references customer (id)
+2023-01-12T19:33:41.402+01:00 DEBUG 1968 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart_qty 
+       add constraint FKmjwrg98a6xpeamfgxrifx5vwi 
+       foreign key (cart_id) 
+       references cart (id)
+2023-01-12T19:33:41.424+01:00 DEBUG 1968 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart_qty 
+       add constraint FKfib2pg2q8myfa99nxrbpv7vn5 
+       foreign key (product_id) 
+       references product (id)
+2023-01-12T19:33:41.841+01:00  WARN 1968 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-12T19:33:47.407+01:00  WARN 1968 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.example.rizzboys.dto.UserDto` from Array value (token `JsonToken.START_ARRAY`)]
+2023-01-12T19:35:15.010+01:00 DEBUG 1968 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Customer
+        */ insert 
+    into
+        customer (first_name, last_name, password, username) 
+    values
+        (?, ?, ?, ?)
+2023-01-12T19:36:25.390+01:00 DEBUG 1968 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Customer
+        */ insert 
+    into
+        customer (first_name, last_name, password, username) 
+    values
+        (?, ?, ?, ?)
+2023-01-12T19:36:29.976+01:00 DEBUG 1968 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Product
+        */ insert 
+    into
+        product (code, description, enable, name, price, dtype) 
+    values
+        (?, ?, ?, ?, ?, 'Product')
+2023-01-12T19:36:52.083+01:00 DEBUG 1968 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Product
+        */ insert 
+    into
+        product (code, description, enable, name, price, dtype) 
+    values
+        (?, ?, ?, ?, ?, 'Product')
+2023-01-12T19:37:01.909+01:00 DEBUG 1968 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.dtype,
+        p1_0.code,
+        p1_0.description,
+        p1_0.enable,
+        p1_0.name,
+        p1_0.price 
+    from
+        product p1_0 
+    where
+        p1_0.id=?
+2023-01-12T19:37:02.023+01:00 DEBUG 1968 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T19:37:02.031+01:00 DEBUG 1968 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.first_name,
+        c1_0.last_name,
+        c1_0.password,
+        c1_0.username 
+    from
+        customer c1_0 
+    where
+        c1_0.id=?
+2023-01-12T19:37:02.038+01:00 DEBUG 1968 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Cart
+        */ insert 
+    into
+        cart (customer_id, date, state) 
+    values
+        (?, ?, ?)
+2023-01-12T19:37:02.055+01:00 DEBUG 1968 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.CartQty
+        */ insert 
+    into
+        cart_qty (cart_id, product_id, quantity) 
+    values
+        (?, ?, ?)
+2023-01-12T19:37:09.616+01:00 DEBUG 1968 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.dtype,
+        p1_0.code,
+        p1_0.description,
+        p1_0.enable,
+        p1_0.name,
+        p1_0.price 
+    from
+        product p1_0 
+    where
+        p1_0.id=?
+2023-01-12T19:37:09.622+01:00 DEBUG 1968 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T19:37:09.627+01:00 DEBUG 1968 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.first_name,
+        c1_0.last_name,
+        c1_0.password,
+        c1_0.username 
+    from
+        customer c1_0 
+    where
+        c1_0.id=?
+2023-01-12T19:37:09.632+01:00 DEBUG 1968 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Cart
+        */ insert 
+    into
+        cart (customer_id, date, state) 
+    values
+        (?, ?, ?)
+2023-01-12T19:37:09.638+01:00 DEBUG 1968 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.CartQty
+        */ insert 
+    into
+        cart_qty (cart_id, product_id, quantity) 
+    values
+        (?, ?, ?)
+2023-01-12T19:37:13.961+01:00 DEBUG 1968 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.dtype,
+        p1_0.code,
+        p1_0.description,
+        p1_0.enable,
+        p1_0.name,
+        p1_0.price 
+    from
+        product p1_0 
+    where
+        p1_0.id=?
+2023-01-12T19:37:13.967+01:00 DEBUG 1968 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T19:37:13.971+01:00 DEBUG 1968 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.first_name,
+        c1_0.last_name,
+        c1_0.password,
+        c1_0.username 
+    from
+        customer c1_0 
+    where
+        c1_0.id=?
+2023-01-12T19:37:13.980+01:00 DEBUG 1968 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.CartQty
+        */ insert 
+    into
+        cart_qty (cart_id, product_id, quantity) 
+    values
+        (?, ?, ?)
+2023-01-12T19:37:47.236+01:00 DEBUG 1968 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T19:37:47.251+01:00 ERROR 1968 --- [http-nio-8080-exec-4] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "com.example.rizzboys.model.Cart.getId()" because "c" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "com.example.rizzboys.model.Cart.getId()" because "c" is null
+	at com.example.rizzboys.service.impl.CartServiceImpl.displayCart(CartServiceImpl.java:80) ~[classes/:na]
+	at com.example.rizzboys.controller.CartController.displayCart(CartController.java:36) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1080) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:973) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1003) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:895) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:705) ~[tomcat-embed-core-10.1.1.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:880) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814) ~[tomcat-embed-core-10.1.1.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1739) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2023-01-12T19:37:54.537+01:00 DEBUG 1968 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T19:37:54.541+01:00 ERROR 1968 --- [http-nio-8080-exec-6] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "com.example.rizzboys.model.Cart.getId()" because "c" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "com.example.rizzboys.model.Cart.getId()" because "c" is null
+	at com.example.rizzboys.service.impl.CartServiceImpl.displayCart(CartServiceImpl.java:80) ~[classes/:na]
+	at com.example.rizzboys.controller.CartController.displayCart(CartController.java:36) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1080) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:973) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1003) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:895) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:705) ~[tomcat-embed-core-10.1.1.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:880) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814) ~[tomcat-embed-core-10.1.1.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1739) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2023-01-12T19:37:58.586+01:00 DEBUG 1968 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T19:37:58.590+01:00 ERROR 1968 --- [http-nio-8080-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "com.example.rizzboys.model.Cart.getId()" because "c" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "com.example.rizzboys.model.Cart.getId()" because "c" is null
+	at com.example.rizzboys.service.impl.CartServiceImpl.displayCart(CartServiceImpl.java:80) ~[classes/:na]
+	at com.example.rizzboys.controller.CartController.displayCart(CartController.java:36) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1080) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:973) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1003) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:895) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:705) ~[tomcat-embed-core-10.1.1.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:880) ~[spring-webmvc-6.0.2.jar:6.0.2]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814) ~[tomcat-embed-core-10.1.1.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1739) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2023-01-12T19:40:58.065+01:00  WARN 352 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-01-12T19:40:58.138+01:00  WARN 352 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-01-12T19:40:58.241+01:00  WARN 352 --- [main] o.h.cfg.annotations.EntityBinder         : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.example.rizzboys.model.Catalog
+2023-01-12T19:40:58.626+01:00 DEBUG 352 --- [main] org.hibernate.SQL                        : 
+    
+    create table cart (
+       id bigint not null auto_increment,
+        date date not null,
+        state varchar(255),
+        customer_id bigint,
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T19:40:58.645+01:00 DEBUG 352 --- [main] org.hibernate.SQL                        : 
+    
+    create table cart_qty (
+       cart_qty_id bigint not null auto_increment,
+        quantity integer,
+        cart_id bigint,
+        product_id bigint,
+        primary key (cart_qty_id)
+    ) engine=InnoDB
+2023-01-12T19:40:58.654+01:00 DEBUG 352 --- [main] org.hibernate.SQL                        : 
+    
+    create table customer (
+       id bigint not null auto_increment,
+        first_name varchar(255) not null,
+        last_name varchar(255) not null,
+        password varchar(255) not null,
+        username varchar(255) not null,
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T19:40:58.662+01:00 DEBUG 352 --- [main] org.hibernate.SQL                        : 
+    
+    create table product (
+       dtype varchar(31) not null,
+        id bigint not null auto_increment,
+        code varchar(255) not null,
+        description varchar(255),
+        enable bit,
+        name varchar(255) not null,
+        price float(53),
+        primary key (id)
+    ) engine=InnoDB
+2023-01-12T19:40:58.673+01:00 DEBUG 352 --- [main] org.hibernate.SQL                        : 
+    
+    alter table customer 
+       drop index UK_irnrrncatp2fvw52vp45j7rlw
+2023-01-12T19:40:58.681+01:00 DEBUG 352 --- [main] org.hibernate.SQL                        : 
+    
+    alter table customer 
+       add constraint UK_irnrrncatp2fvw52vp45j7rlw unique (username)
+2023-01-12T19:40:58.689+01:00 DEBUG 352 --- [main] org.hibernate.SQL                        : 
+    
+    alter table product 
+       drop index UK_h3w5r1mx6d0e5c6um32dgyjej
+2023-01-12T19:40:58.692+01:00 DEBUG 352 --- [main] org.hibernate.SQL                        : 
+    
+    alter table product 
+       add constraint UK_h3w5r1mx6d0e5c6um32dgyjej unique (code)
+2023-01-12T19:40:58.698+01:00 DEBUG 352 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart 
+       add constraint FKdebwvad6pp1ekiqy5jtixqbaj 
+       foreign key (customer_id) 
+       references customer (id)
+2023-01-12T19:40:58.725+01:00 DEBUG 352 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart_qty 
+       add constraint FKmjwrg98a6xpeamfgxrifx5vwi 
+       foreign key (cart_id) 
+       references cart (id)
+2023-01-12T19:40:58.750+01:00 DEBUG 352 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cart_qty 
+       add constraint FKfib2pg2q8myfa99nxrbpv7vn5 
+       foreign key (product_id) 
+       references product (id)
+2023-01-12T19:40:59.172+01:00  WARN 352 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-12T19:41:05.619+01:00 DEBUG 352 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Customer
+        */ insert 
+    into
+        customer (first_name, last_name, password, username) 
+    values
+        (?, ?, ?, ?)
+2023-01-12T19:41:09.290+01:00 DEBUG 352 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Product
+        */ insert 
+    into
+        product (code, description, enable, name, price, dtype) 
+    values
+        (?, ?, ?, ?, ?, 'Product')
+2023-01-12T19:41:13.177+01:00 DEBUG 352 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.dtype,
+        p1_0.code,
+        p1_0.description,
+        p1_0.enable,
+        p1_0.name,
+        p1_0.price 
+    from
+        product p1_0 
+    where
+        p1_0.id=?
+2023-01-12T19:41:13.254+01:00 DEBUG 352 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T19:41:13.261+01:00 DEBUG 352 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.first_name,
+        c1_0.last_name,
+        c1_0.password,
+        c1_0.username 
+    from
+        customer c1_0 
+    where
+        c1_0.id=?
+2023-01-12T19:42:44.706+01:00 DEBUG 352 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.dtype,
+        p1_0.code,
+        p1_0.description,
+        p1_0.enable,
+        p1_0.name,
+        p1_0.price 
+    from
+        product p1_0 
+    where
+        p1_0.id=?
+2023-01-12T19:42:44.712+01:00 DEBUG 352 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T19:42:44.715+01:00 DEBUG 352 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.first_name,
+        c1_0.last_name,
+        c1_0.password,
+        c1_0.username 
+    from
+        customer c1_0 
+    where
+        c1_0.id=?
+2023-01-12T19:42:44.722+01:00 DEBUG 352 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Cart
+        */ insert 
+    into
+        cart (customer_id, date, state) 
+    values
+        (?, ?, ?)
+2023-01-12T19:42:44.742+01:00 DEBUG 352 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.CartQty
+        */ insert 
+    into
+        cart_qty (cart_id, product_id, quantity) 
+    values
+        (?, ?, ?)
+2023-01-12T19:42:53.609+01:00 DEBUG 352 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T19:42:53.615+01:00 DEBUG 352 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.first_name,
+        c1_0.last_name,
+        c1_0.password,
+        c1_0.username 
+    from
+        customer c1_0 
+    where
+        c1_0.id=?
+2023-01-12T19:42:53.640+01:00 DEBUG 352 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        c1_0.cart_id,
+        c1_0.cart_qty_id,
+        p1_0.id,
+        p1_0.dtype,
+        p1_0.code,
+        p1_0.description,
+        p1_0.enable,
+        p1_0.name,
+        p1_0.price,
+        c1_0.quantity 
+    from
+        cart_qty c1_0 
+    left join
+        product p1_0 
+            on p1_0.id=c1_0.product_id 
+    where
+        c1_0.cart_id=?
+2023-01-12T21:05:45.991+01:00  WARN 352 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=59m17s490ms680µs900ns).
+2023-01-12T21:29:28.047+01:00  WARN 24172 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-01-12T21:29:28.141+01:00  WARN 24172 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-01-12T21:29:28.235+01:00  WARN 24172 --- [main] o.h.cfg.annotations.EntityBinder         : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.example.rizzboys.model.Catalog
+2023-01-12T21:29:29.082+01:00  WARN 24172 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-12T21:29:36.195+01:00 DEBUG 24172 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Product
+        */ insert 
+    into
+        product (code, description, enable, name, price, dtype) 
+    values
+        (?, ?, ?, ?, ?, 'Product')
+2023-01-12T21:30:02.041+01:00 DEBUG 24172 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.Product
+        */ insert 
+    into
+        product (code, description, enable, name, price, dtype) 
+    values
+        (?, ?, ?, ?, ?, 'Product')
+2023-01-12T21:31:02.782+01:00 DEBUG 24172 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.dtype,
+        p1_0.code,
+        p1_0.description,
+        p1_0.enable,
+        p1_0.name,
+        p1_0.price 
+    from
+        product p1_0 
+    where
+        p1_0.id=?
+2023-01-12T21:31:02.896+01:00 DEBUG 24172 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T21:31:02.902+01:00 DEBUG 24172 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.first_name,
+        c1_0.last_name,
+        c1_0.password,
+        c1_0.username 
+    from
+        customer c1_0 
+    where
+        c1_0.id=?
+2023-01-12T21:31:02.925+01:00 DEBUG 24172 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    /* insert com.example.rizzboys.model.CartQty
+        */ insert 
+    into
+        cart_qty (cart_id, product_id, quantity) 
+    values
+        (?, ?, ?)
+2023-01-12T22:07:33.511+01:00  WARN 24532 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-01-12T22:07:33.647+01:00  WARN 24532 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-01-12T22:07:33.774+01:00  WARN 24532 --- [main] o.h.cfg.annotations.EntityBinder         : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.example.rizzboys.model.Catalog
+2023-01-12T22:07:34.586+01:00  WARN 24532 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-12T22:08:46.663+01:00 DEBUG 24532 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        CartQty ca 
+    where
+        ca.cartQty_id = :cartQtyId */ select
+            c1_0.cart_qty_id,
+            c1_0.cart_id,
+            c1_0.product_id,
+            c1_0.quantity 
+        from
+            cart_qty c1_0 
+        where
+            c1_0.cart_qty_id=?
+2023-01-12T22:08:46.674+01:00 DEBUG 24532 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c2_0.id,
+        c2_0.first_name,
+        c2_0.last_name,
+        c2_0.password,
+        c2_0.username,
+        c1_0.date,
+        c1_0.state 
+    from
+        cart c1_0 
+    left join
+        customer c2_0 
+            on c2_0.id=c1_0.customer_id 
+    where
+        c1_0.id=?
+2023-01-12T22:08:46.691+01:00 DEBUG 24532 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.dtype,
+        p1_0.code,
+        p1_0.description,
+        p1_0.enable,
+        p1_0.name,
+        p1_0.price 
+    from
+        product p1_0 
+    where
+        p1_0.id=?
+2023-01-12T22:08:46.694+01:00 DEBUG 24532 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        CartQty ca 
+    where
+        ca.cartQty_id = :cartQtyId */ select
+            c1_0.cart_qty_id,
+            c1_0.cart_id,
+            c1_0.product_id,
+            c1_0.quantity 
+        from
+            cart_qty c1_0 
+        where
+            c1_0.cart_qty_id=?
+2023-01-12T22:08:46.696+01:00 DEBUG 24532 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    /* select
+        cu 
+    from
+        Customer cu 
+    where
+        cu.id = :customerId */ select
+            c1_0.id,
+            c1_0.first_name,
+            c1_0.last_name,
+            c1_0.password,
+            c1_0.username 
+        from
+            customer c1_0 
+        where
+            c1_0.id=?
+2023-01-12T22:08:46.699+01:00 DEBUG 24532 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    /* select
+        ca 
+    from
+        Cart ca 
+    where
+        ca.customer.id = :idCustomer 
+        and ca.state = 'DRAFT' */ select
+            c1_0.id,
+            c1_0.customer_id,
+            c1_0.date,
+            c1_0.state 
+        from
+            cart c1_0 
+        where
+            c1_0.customer_id=? 
+            and c1_0.state='DRAFT'
+2023-01-12T22:08:46.704+01:00 DEBUG 24532 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        c1_0.cart_id,
+        c1_0.cart_qty_id,
+        p1_0.id,
+        p1_0.dtype,
+        p1_0.code,
+        p1_0.description,
+        p1_0.enable,
+        p1_0.name,
+        p1_0.price,
+        c1_0.quantity 
+    from
+        cart_qty c1_0 
+    left join
+        product p1_0 
+            on p1_0.id=c1_0.product_id 
+    where
+        c1_0.cart_id=?

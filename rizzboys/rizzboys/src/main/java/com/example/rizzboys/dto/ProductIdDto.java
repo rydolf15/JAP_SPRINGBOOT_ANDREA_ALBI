@@ -1,13 +1,8 @@
 package com.example.rizzboys.dto;
 
+import lombok.Data;
+
+@Data
 public class ProductIdDto {
     Long idProduct;
-
-    public Long getIdProduct() {
-        return idProduct;
-    }
-
-    public void setIdProduct(Long idProduct) {
-        this.idProduct = idProduct;
-    }
 }

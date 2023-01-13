@@ -4,13 +4,8 @@ import com.example.rizzboys.dto.AddToCartDto;
 import com.example.rizzboys.dto.CartDto;
 import com.example.rizzboys.dto.CustomerIdDto;
 import com.example.rizzboys.dto.RemoveFromCartDto;
-import com.example.rizzboys.model.Cart;
-import com.example.rizzboys.model.Customer;
-import com.example.rizzboys.model.Product;
-import com.example.rizzboys.repos.CartRepository;
 import com.example.rizzboys.service.CartService;
 import com.example.rizzboys.service.ProductService;
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,15 +27,21 @@ public class CartController {
 
     @GetMapping("/displayCart")
     @ResponseBody
-    public CartDto displayCart(CustomerIdDto customerIdDto){
+    public CartDto displayCart(@RequestBody CustomerIdDto customerIdDto){
         return cartService.displayCart(customerIdDto);
     };
 
-    public CartDto removeFromCart(RemoveFromCartDto removeFromCartDto){
-        return null;
+
+    @DeleteMapping("/removeFromCart")
+    @ResponseBody
+    public CartDto removeFromCart(@RequestBody RemoveFromCartDto removeFromCartDto){
+        return cartService.removeFromCart(removeFromCartDto);
     };
 
-    public void goToCheckout(CustomerIdDto customerIdDto){};
+    @GetMapping("/goToCheckout")
+    public void goToCheckout(CustomerIdDto customerIdDto){
+
+    };
 
 
 }

@@ -1,9 +1,6 @@
 package com.example.rizzboys.service;
 
-import com.example.rizzboys.dto.AddToCartDto;
-import com.example.rizzboys.dto.CartDto;
-import com.example.rizzboys.dto.CustomerIdDto;
-import com.example.rizzboys.dto.RemoveFromCartDto;
+import com.example.rizzboys.dto.*;
 import com.example.rizzboys.exception.NotFoundException;
 import com.example.rizzboys.model.Cart;
 import com.example.rizzboys.model.Product;
@@ -22,7 +19,7 @@ public interface CartService {
 
     void goToCheckout(CustomerIdDto customerIdDto);
 
-    List<Product> searchInCatalog(String criterion);
+    List<ProductDto> searchInCatalog(String criterion);
 
     void removeCart(Cart cart);
 

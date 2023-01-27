@@ -3,6 +3,7 @@ package com.example.rizzboys.service.impl;
 import com.example.rizzboys.dto.ProductDto;
 import com.example.rizzboys.dto.ProductIdDto;
 import com.example.rizzboys.dto.ProductKeysDto;
+import com.example.rizzboys.dto.StringFilterDto;
 import com.example.rizzboys.exception.NotFoundException;
 import com.example.rizzboys.model.Product;
 import com.example.rizzboys.repos.ProductRepository;
@@ -10,6 +11,7 @@ import com.example.rizzboys.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -56,6 +58,7 @@ public class ProductServiceImpl implements ProductService {
         return productDto;
     }
 
+
     @Override
     public void deleteProduct(ProductIdDto productIdDto) {
         Product p = productRepository.findProductById(productIdDto.getIdProduct());
@@ -70,7 +73,6 @@ public class ProductServiceImpl implements ProductService {
         else
             p.setEnable(false);
     }
-
 
     @Override
     public List<Product> findAllProducts() {

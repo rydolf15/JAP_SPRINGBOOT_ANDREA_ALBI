@@ -9,9 +9,6 @@ import java.util.List;
 
 public interface CustomerService {
 
-
-    public Customer saveCustomer(Customer c);
-
     public UserDto login(LoginRequestDto loginRequestDto) throws NotFoundException;
 
     public void removeCustomer(Customer c);

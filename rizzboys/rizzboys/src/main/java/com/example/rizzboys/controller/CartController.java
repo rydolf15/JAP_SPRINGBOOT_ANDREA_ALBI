@@ -40,7 +40,7 @@ public class CartController {
 
     @GetMapping("/goToCheckout")
     public void goToCheckout(CustomerIdDto customerIdDto){
-
+        cartService.goToCheckout(customerIdDto);
     };
 
 

@@ -3,6 +3,7 @@ package com.example.rizzboys.service;
 import com.example.rizzboys.dto.ProductDto;
 import com.example.rizzboys.dto.ProductIdDto;
 import com.example.rizzboys.dto.ProductKeysDto;
+import com.example.rizzboys.dto.StringFilterDto;
 import com.example.rizzboys.exception.NotFoundException;
 import com.example.rizzboys.model.Product;
 

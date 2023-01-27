@@ -131,10 +131,21 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public List<Product> searchInCatalog(String criterion) {
+    public List<ProductDto> searchInCatalog(String criterion) {
         String s = "%" + criterion + "%";
         var found = productRepository.searchInCatalog(s);
-        return found;
+        List<ProductDto> foundList = new ArrayList<>();
+        for(Product p: found){
+            ProductDto productDto = new ProductDto();
+            productDto.setDescription(p.getDescription());
+            productDto.setName(p.getName());
+            productDto.setCode(p.getCode());
+            productDto.setPrice(p.getPrice());
+            productDto.setEnable(p.getEnable());
+            productDto.setId(p.getId());
+            foundList.add(productDto);
+        }
+        return foundList;
     }
 
     @Override

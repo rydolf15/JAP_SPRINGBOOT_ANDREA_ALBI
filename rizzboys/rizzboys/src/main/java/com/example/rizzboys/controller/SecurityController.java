@@ -18,20 +18,4 @@ public class SecurityController {
         return customerService.login(loginRequestDto);
     };
 
-    @PostMapping("/addCustomer")
-    @ResponseBody
-    public UserDto addCustomer(@RequestBody UserDto dto){
-        Customer cx = new Customer();
-        cx.setFirstName(dto.getFirstName());
-        cx.setLastName(dto.getLastName());
-        cx.setPassword("1234");
-        cx.setUsername(dto.getUsername());
-        var c2 =  customerService.saveCustomer(cx);
-        UserDto ud = new UserDto();
-        ud.setId(c2.getId());
-        ud.setFirstName(c2.getFirstName());
-        ud.setLastName(c2.getLastName());
-        ud.setUsername(c2.getUsername());
-        return ud;
-    }
 }

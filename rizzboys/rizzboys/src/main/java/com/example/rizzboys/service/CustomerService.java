@@ -11,6 +11,8 @@ public interface CustomerService {
 
     public UserDto login(LoginRequestDto loginRequestDto) throws NotFoundException;
 
+    public UserDto addCustomer(Customer c);
+
     public void removeCustomer(Customer c);
 
     void removeAll();

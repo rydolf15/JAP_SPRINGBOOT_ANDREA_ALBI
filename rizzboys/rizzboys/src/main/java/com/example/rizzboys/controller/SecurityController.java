@@ -14,8 +14,15 @@ public class SecurityController {
     CustomerService customerService;
 
     @RequestMapping("/login")
+    @ResponseBody
     public UserDto login(LoginRequestDto loginRequestDto){
         return customerService.login(loginRequestDto);
     };
+
+    @PostMapping("/addCustomer")
+    @ResponseBody
+    public UserDto addCustomer(@RequestBody Customer c) {
+        return customerService.addCustomer(c);
+    }
 
 }

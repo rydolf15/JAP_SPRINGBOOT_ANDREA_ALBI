@@ -33,12 +33,12 @@ public class CatalogController {
         return productService.getProductData(productKeysDto);
     }
 
-    @PutMapping("/add")
+    @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
     public void addProduct(@RequestBody ProductDto productDto){
         productService.addProduct(productDto);
     };
 
-    @PostMapping("/changeProduct")
+    @PutMapping("/changeProduct")
     public void changeProduct(@RequestBody ProductDto productDto){
         productService.changeProduct(productDto);
     };

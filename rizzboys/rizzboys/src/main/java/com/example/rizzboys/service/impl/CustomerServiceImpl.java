@@ -17,12 +17,15 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     CustomerRespository customerRespository;
 
+
+
+
     //ASK
     @Override
     public UserDto login(LoginRequestDto loginRequestDto) throws NotFoundException {
         Customer customer = new Customer();
         try {
-            customer = customerRespository.findCustomerByLoginCredentials(loginRequestDto.getPassword());
+            customer = customerRespository.findCustomerByLoginCredentials(loginRequestDto.getUsername(), loginRequestDto.getPassword());
         } catch(NotFoundException notFoundException) {
             System.out.println("Username or password is incorrect!");
         }
@@ -31,6 +34,17 @@ public class CustomerServiceImpl implements CustomerService {
         userDto.setUsername(customer.getUsername());
         userDto.setFirstName(customer.getFirstName());
         userDto.setLastName(customer.getLastName());
+        return userDto;
+    }
+
+    @Override
+    public UserDto addCustomer(Customer c) {
+        customerRespository.save(c);
+        UserDto userDto = new UserDto();
+        userDto.setId(c.getId());
+        userDto.setUsername(c.getUsername());
+        userDto.setFirstName(c.getFirstName());
+        userDto.setLastName(c.getLastName());
         return userDto;
     }
 

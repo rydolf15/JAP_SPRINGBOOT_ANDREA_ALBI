@@ -12,8 +12,8 @@ import java.util.List;
 @Entity
 public class Catalog extends Product{
 
-/*    @ManyToOne
-    public List<Product> products = new ArrayList<>();*/
+    @OneToMany
+    public List<Product> products = new ArrayList<>();
     public Catalog() {
     }
 

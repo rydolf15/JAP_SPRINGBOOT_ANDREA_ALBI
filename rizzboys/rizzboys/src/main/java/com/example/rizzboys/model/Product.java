@@ -31,7 +31,7 @@ public class Product {
         this.name = productDto.getName();
         this.description = productDto.getDescription();
         this.price = productDto.getPrice();
-        this.enable = productDto.getEnabled();
+        this.enable = productDto.getEnable();
     }
 
 

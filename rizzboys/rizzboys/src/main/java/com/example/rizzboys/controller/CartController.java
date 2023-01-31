@@ -20,7 +20,6 @@ public class CartController {
     private ProductService productService;
 
     @PostMapping("/addToCart")
-    @ResponseBody
     public void addToCart(@RequestBody AddToCartDto addToCartDto){
         cartService.addToCart(addToCartDto);
     };

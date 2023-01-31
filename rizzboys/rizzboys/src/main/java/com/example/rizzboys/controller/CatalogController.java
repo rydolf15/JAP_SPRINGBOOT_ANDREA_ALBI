@@ -22,7 +22,7 @@ public class CatalogController {
     private ProductService productService;
 
     @ResponseBody
-    @GetMapping("/search")
+    @GetMapping("/searchInCatalog")
     public List<ProductDto> searchInCatalog(@RequestBody StringFilterDto stringFilterDto){
         return cartService.searchInCatalog(stringFilterDto.getCriterion());
     }

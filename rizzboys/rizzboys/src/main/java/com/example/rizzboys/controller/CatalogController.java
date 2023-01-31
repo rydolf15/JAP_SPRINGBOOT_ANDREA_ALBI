@@ -48,7 +48,7 @@ public class CatalogController {
         productService.deleteProduct(productIdDto);
     };
 
-    @PostMapping("/switchpstate")
+    @PutMapping("/switchpstate")
     public void switchEnabledState(ProductIdDto productIdDto){
         productService.switchEnabledState(productIdDto);
     };

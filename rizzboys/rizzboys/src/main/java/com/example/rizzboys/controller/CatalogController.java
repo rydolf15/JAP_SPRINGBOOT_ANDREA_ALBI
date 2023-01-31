@@ -49,7 +49,7 @@ public class CatalogController {
     };
 
     @PutMapping("/switchpstate")
-    public void switchEnabledState(ProductIdDto productIdDto){
+    public void switchEnabledState(@RequestBody ProductIdDto productIdDto){
         productService.switchEnabledState(productIdDto);
     };
 

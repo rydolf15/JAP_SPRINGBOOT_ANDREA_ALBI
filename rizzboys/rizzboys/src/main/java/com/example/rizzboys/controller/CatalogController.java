@@ -28,7 +28,7 @@ public class CatalogController {
     }
 
     @ResponseBody
-    @GetMapping("/get")
+    @GetMapping("/getProductData")
     public ProductDto getProductData(@RequestBody ProductKeysDto productKeysDto){
         return productService.getProductData(productKeysDto);
     }

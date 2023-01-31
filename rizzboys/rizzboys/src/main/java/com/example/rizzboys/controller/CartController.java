@@ -37,7 +37,7 @@ public class CartController {
         return cartService.removeFromCart(removeFromCartDto);
     };
 
-    @GetMapping("/goToCheckout")
+    @PutMapping("/goToCheckout")
     public void goToCheckout(CustomerIdDto customerIdDto){
         cartService.goToCheckout(customerIdDto);
     };

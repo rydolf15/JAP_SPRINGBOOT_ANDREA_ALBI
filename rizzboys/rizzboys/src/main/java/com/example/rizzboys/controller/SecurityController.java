@@ -13,9 +13,9 @@ public class SecurityController {
     @Autowired
     CustomerService customerService;
 
-    @RequestMapping("/login")
+    @GetMapping("/login")
     @ResponseBody
-    public UserDto login(LoginRequestDto loginRequestDto){
+    public UserDto login(@RequestBody LoginRequestDto loginRequestDto){
         return customerService.login(loginRequestDto);
     };
 

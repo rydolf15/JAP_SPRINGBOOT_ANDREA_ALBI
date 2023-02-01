@@ -43,12 +43,12 @@ public class CartController {
     };
 
     @PostMapping("/goToCheckout")
-    public void goToCheckout(CustomerIdDto customerIdDto){
+    public void goToCheckout(@RequestBody CustomerIdDto customerIdDto){
         cartService.goToCheckout(customerIdDto);
     };
 
     @GetMapping("/findCart")
-    public Cart findCart(CustomerIdDto customerIdDto) {
+    public Cart findCart(@RequestBody CustomerIdDto customerIdDto) {
         return cartRepository.findCartForCustomer(customerIdDto.getCustomerId());
     }
 }

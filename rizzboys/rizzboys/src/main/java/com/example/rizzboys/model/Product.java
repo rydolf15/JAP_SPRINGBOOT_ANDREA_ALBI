@@ -3,6 +3,8 @@ package com.example.rizzboys.model;
 import com.example.rizzboys.dto.ProductDto;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,7 @@ public class Product {
     protected Boolean enable;
 
     @OneToMany(mappedBy = "product")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     protected List<CartQty> qties = new ArrayList<>();
 
 

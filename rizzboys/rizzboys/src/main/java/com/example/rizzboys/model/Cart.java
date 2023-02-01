@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.cglib.core.Local;
 
 
@@ -31,6 +33,7 @@ public class Cart {
     private Customer customer;
 
     @OneToMany(mappedBy = "cart")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<CartQty> cartQtys = new ArrayList<>();
 }
 

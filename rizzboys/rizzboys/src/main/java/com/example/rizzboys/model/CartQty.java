@@ -2,6 +2,8 @@ package com.example.rizzboys.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +18,11 @@ public class CartQty {
     private Integer quantity;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Cart cart;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Product product;
 
     public Cart getCart() {

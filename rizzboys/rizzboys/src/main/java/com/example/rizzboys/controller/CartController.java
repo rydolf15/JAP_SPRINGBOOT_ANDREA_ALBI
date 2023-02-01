@@ -4,6 +4,8 @@ import com.example.rizzboys.dto.AddToCartDto;
 import com.example.rizzboys.dto.CartDto;
 import com.example.rizzboys.dto.CustomerIdDto;
 import com.example.rizzboys.dto.RemoveFromCartDto;
+import com.example.rizzboys.model.Cart;
+import com.example.rizzboys.repos.CartRepository;
 import com.example.rizzboys.service.CartService;
 import com.example.rizzboys.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/cart")
 public class CartController {
+
+    @Autowired
+    private CartRepository cartRepository;
 
     @Autowired
     private CartService cartService;
@@ -37,10 +42,13 @@ public class CartController {
         return cartService.removeFromCart(removeFromCartDto);
     };
 
-    @PutMapping("/goToCheckout")
+    @PostMapping("/goToCheckout")
     public void goToCheckout(CustomerIdDto customerIdDto){
         cartService.goToCheckout(customerIdDto);
     };
 
-
+    @GetMapping("/findCart")
+    public Cart findCart(CustomerIdDto customerIdDto) {
+        return cartRepository.findCartForCustomer(customerIdDto.getCustomerId());
+    }
 }

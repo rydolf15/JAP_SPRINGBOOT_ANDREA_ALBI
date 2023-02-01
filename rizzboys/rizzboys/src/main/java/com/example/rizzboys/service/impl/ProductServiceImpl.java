@@ -5,7 +5,9 @@ import com.example.rizzboys.dto.ProductIdDto;
 import com.example.rizzboys.dto.ProductKeysDto;
 import com.example.rizzboys.dto.StringFilterDto;
 import com.example.rizzboys.exception.NotFoundException;
+import com.example.rizzboys.model.CartQty;
 import com.example.rizzboys.model.Product;
+import com.example.rizzboys.repos.CartQtyRepository;
 import com.example.rizzboys.repos.ProductRepository;
 import com.example.rizzboys.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private CartQtyRepository cartQtyRepository;
 
     @Override
     public void addProduct(ProductDto productDto) {
@@ -62,6 +66,8 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteProduct(ProductIdDto productIdDto) {
         Product p = productRepository.findProductById(productIdDto.getIdProduct());
+        CartQty cartQty = cartQtyRepository.findCartQtiesByProductId(productIdDto.getIdProduct());
+        cartQtyRepository.delete(cartQty);
         productRepository.delete(p);
     }
 

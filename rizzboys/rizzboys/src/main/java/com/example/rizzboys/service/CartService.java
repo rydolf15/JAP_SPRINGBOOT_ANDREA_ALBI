@@ -19,8 +19,6 @@ public interface CartService {
 
     void goToCheckout(CustomerIdDto customerIdDto);
 
-    List<ProductDto> searchInCatalog(String criterion);
-
     void removeCart(Cart cart);
 
     void removeAll();

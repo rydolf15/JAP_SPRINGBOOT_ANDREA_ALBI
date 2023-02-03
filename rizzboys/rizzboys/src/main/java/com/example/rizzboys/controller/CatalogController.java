@@ -24,7 +24,7 @@ public class CatalogController {
     @ResponseBody
     @GetMapping("/searchInCatalog")
     public List<ProductDto> searchInCatalog(@RequestBody StringFilterDto stringFilterDto){
-        return cartService.searchInCatalog(stringFilterDto.getCriterion());
+        return productService.searchInCatalog(stringFilterDto.getCriterion());
     }
 
     @ResponseBody

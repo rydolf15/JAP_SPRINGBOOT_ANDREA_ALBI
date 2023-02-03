@@ -19,6 +19,8 @@ public interface ProductService {
 
     ProductDto getProductData(ProductKeysDto productKeysDto);
 
+    List<ProductDto> searchInCatalog(String criterion);
+
     void deleteProduct(ProductIdDto productIdDto);
 
     void switchEnabledState(ProductIdDto productIdDto);

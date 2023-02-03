@@ -16,7 +16,7 @@ public interface CartQtyRepository extends JpaRepository<CartQty, Long> {
     void deleteCarQtyByProductId(@Param("productId")Long productId);
 
     @Query("select ca from CartQty ca where ca.product.id = :productId")
-    CartQty findCartQtiesByProductId(@Param("productId") Long productId);
+    List<CartQty> findAllByProductId(@Param("productId") Long productId);
 
     @Query("select ca from CartQty ca where ca.cart.id = :cartId")
     List<CartQty> findCartQtiesForCart(Long cartId);

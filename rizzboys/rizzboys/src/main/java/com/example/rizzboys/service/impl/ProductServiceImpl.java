@@ -1,10 +1,8 @@
 package com.example.rizzboys.service.impl;
 
-import com.example.rizzboys.dto.ProductDto;
-import com.example.rizzboys.dto.ProductIdDto;
-import com.example.rizzboys.dto.ProductKeysDto;
-import com.example.rizzboys.dto.StringFilterDto;
+import com.example.rizzboys.dto.*;
 import com.example.rizzboys.exception.NotFoundException;
+import com.example.rizzboys.model.Cart;
 import com.example.rizzboys.model.CartQty;
 import com.example.rizzboys.model.Product;
 import com.example.rizzboys.repos.CartQtyRepository;
@@ -13,6 +11,7 @@ import com.example.rizzboys.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,12 +61,34 @@ public class ProductServiceImpl implements ProductService {
         return productDto;
     }
 
+    @Override
+    public List<ProductDto> searchInCatalog(String criterion) {
+        String s = "%" + criterion + "%";
+        var found = productRepository.searchInCatalog(s);
+        List<ProductDto> foundList = new ArrayList<>();
+        for(Product p: found){
+            ProductDto productDto = new ProductDto();
+            productDto.setDescription(p.getDescription());
+            productDto.setName(p.getName());
+            productDto.setCode(p.getCode());
+            productDto.setPrice(p.getPrice());
+            productDto.setEnable(p.getEnable());
+            productDto.setId(p.getId());
+            foundList.add(productDto);
+        }
+        return foundList;
+    }
+
 
     @Override
-    public void deleteProduct(ProductIdDto productIdDto) {
+    public void deleteProduct(ProductIdDto productIdDto) throws NotFoundException{
         Product p = productRepository.findProductById(productIdDto.getIdProduct());
-        CartQty cartQty = cartQtyRepository.findCartQtiesByProductId(productIdDto.getIdProduct());
-        cartQtyRepository.delete(cartQty);
+        CartQty cartQty = new CartQty();
+        List<CartQty> cartQtiesOfProduct = cartQtyRepository.findAllByProductId(productIdDto.getIdProduct());
+        for(CartQty qty: cartQtiesOfProduct) {
+            cartQtyRepository.delete(qty);
+        }
+        //cartQtyRepository.deleteCarQtyByProductId(productIdDto.getIdProduct());
         productRepository.delete(p);
     }
 

@@ -41,8 +41,7 @@ public class CartServiceImpl implements CartService {
     @Override
     public void addToCart(AddToCartDto addToCartDto) throws NotFoundException{
         // retrieve product
-        Product product = productRepository.findById(addToCartDto.getIdProduct())
-                .orElse(null);
+        Product product = productRepository.findProductById(addToCartDto.getIdProduct());
         // TODO: retrieve cart
         //the attributes idCustomer in ProductKeysDto are made protected so AddToCartDto can access
         Cart dbCart = cartRepository.findCartForCustomer(addToCartDto.getIdCustomer());
@@ -130,23 +129,6 @@ public class CartServiceImpl implements CartService {
         cartRepository.save(c);
     }
 
-    @Override
-    public List<ProductDto> searchInCatalog(String criterion) {
-        String s = "%" + criterion + "%";
-        var found = productRepository.searchInCatalog(s);
-        List<ProductDto> foundList = new ArrayList<>();
-        for(Product p: found){
-            ProductDto productDto = new ProductDto();
-            productDto.setDescription(p.getDescription());
-            productDto.setName(p.getName());
-            productDto.setCode(p.getCode());
-            productDto.setPrice(p.getPrice());
-            productDto.setEnable(p.getEnable());
-            productDto.setId(p.getId());
-            foundList.add(productDto);
-        }
-        return foundList;
-    }
 
     @Override
     public void removeCart(Cart cart) {

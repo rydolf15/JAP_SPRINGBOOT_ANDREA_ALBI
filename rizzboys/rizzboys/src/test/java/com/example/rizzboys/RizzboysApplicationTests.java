@@ -42,11 +42,6 @@ class RizzboysApplicationTests {
     CartRepository cartRepository;
 
     @Test
-    void emptyDatabase() {
-
-    }
-
-    @Test
     void CustomerCartProductInteraction() {
         emptyTables();
 
